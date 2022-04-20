@@ -79,3 +79,26 @@
     font-size: 15px;
     font-weight: 500;
 }
+.teammember-owl .owl-prev,
+.teammember-owl .owl-next{
+    position: absolute;
+    top: 35%;
+    left: -20px;
+    font-size: 45px !important;
+    margin: 0 !important;
+}
+.teammember-owl .owl-next{
+    left: initial;
+    right: -20px;
+}
+.teammember-owl .owl-prev:hover,
+.teammember-owl .owl-next:hover{
+    background: transparent !important;
+    color: #5e87eb !important;
+}
+.teammember-owl .owl-prev:focus,
+.teammember-owl .owl-next:focus{
+    background: transparent !important;
+    color: #5e87eb !important;
+    outline: none;
+}

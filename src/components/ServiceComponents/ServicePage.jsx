@@ -7,23 +7,32 @@ import '../../theme/service.css';
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import ServiceItrem from '../../components/ServiceComponents/ServiceItem';
 
-const listService = [
-    { id: 1, icon: images.Service1, name: 'Mobile App Development', des:'Android (Java - Kotlin) IOS (Object C - Swift)'},
-    { id: 2, icon: images.Service1, name: 'PC App Development', des:'We provide full-stack services of Window & Unix app development. (Window, Linux, MacOSX, SBC)'},
-    { id: 3, icon: images.Service1, name: 'IoT', des:'We can delpy on Arduino, Raspberry pi or any custom board using C, C++, Python, GoLang language.'},
-    { id: 4, icon: images.Service1, name: 'Mobile App Development', des:'Android (Java - Kotlin) IOS (Object C - Swift)'},
-    { id: 5, icon: images.Service1, name: 'PC App Development', des:'We provide full-stack services of Window & Unix app development. (Window, Linux, MacOSX, SBC)'},
-    { id: 6, icon: images.Service1, name: 'IoT', des:'We can delpy on Arduino, Raspberry pi or any custom board using C, C++, Python, GoLang language.'},
-];
+import {db,storage} from "../../config";
+
+import { collection, query, getDocs } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 class Service extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listService:listService
+         listService:[]
       };
       // This binding is necessary to make `this` work in the callback
       //this.handleClick = this.handleClick.bind(this);
+      this.getData();
+    }
+    getData = async () => {
+        const q = query(collection(db, "services"));
+        let querySnapshot = await getDocs(q);
+        const listserv=[];
+        querySnapshot.forEach((doc) => {
+            //console.log(doc.id);
+            let serv = doc.data();
+            listserv.push(serv);
+            serv['id']=(doc.id);
+            this.setState({listService: listserv,id:doc.id})
+        });
     }
     render() {
         return (
