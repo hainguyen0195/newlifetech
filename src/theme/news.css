@@ -1,0 +1,34 @@
+.news-item{
+    margin:15px 0;
+    text-align: center;
+}
+.news-content{
+    padding: 15px 15px; 
+}
+.news-title{
+    color: #505060;
+    font-size: 18px;
+    margin: 10px 0;
+    transition: 0.4s;
+    line-height: 26px;
+    font-weight: 500;
+}
+.news-des{
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    color: #6a6c72;
+    font-weight: 400;
+}
+.news-author-date{
+    font-size: 13px;
+    font-weight: 400;
+    margin-right: 15px;
+    color: #5e87eb;
+}
+.news-author-date span{
+    padding: 0 5px;
+}
+.news-author-date svg{
+    padding: 0 5px 0 0;
+    font-size: 17px;
+}

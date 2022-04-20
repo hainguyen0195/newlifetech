@@ -1,0 +1,67 @@
+.service{
+    padding: 50px 0;
+}
+.service-item{
+    margin: 10px 0;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.service-item:hover{
+}
+.service-icon{
+    position: relative;
+    overflow: hidden;
+}
+.service-icon img{
+    transition: all 0.3s ease 0s;
+    transform: scale3d(1, 1, 1);
+}
+.service-icon:hover img{
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.service-title{
+    padding: 10px 0 5px;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #2968ab;
+}
+.service-des{
+    color: #959094;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.service-seemore{
+    margin: 10px 0 0
+}
+.service-seemore a{
+    font-size: 14px;
+    color: #ff7200;
+    transition: 0.3s all;
+}
+.service-seemore a:hover{
+    padding: 0 0 0 10px;
+}
+
+.imagesServiceDetail{
+
+}
+.nameServiceDetail{
+    font-size: 25px;
+    color: #505060;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.contentServiceDetail{
+    font-size: 15px;
+    line-height: 1.8;
+    color: #5f5f5f;
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    font-family: 'Cabin', sans-serif;
+}

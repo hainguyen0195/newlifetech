@@ -1,0 +1,81 @@
+.teammember{
+    padding: 70px 0;
+}
+.teammember-item{
+    margin:10px 0;
+    text-align: center;
+}
+.teammember-icon{
+    position: relative;
+}
+.teammember-icon::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #5e87eb;
+    background-image: linear-gradient(-135deg, #611bdd 0%, #5e87eb 100%);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.teammember-icon:hover:before{
+    opacity: .8;
+    visibility: visible;
+}
+.team-social-icon{
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.teammember-icon:hover .team-social-icon{}
+.team-social-icon a{
+    margin: 5px;
+    color: #5e87eb;
+    font-size: 16px;
+    display: inline-block;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    will-change: transform;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 3px;
+    line-height: 30px;
+}
+.teammember-icon:hover .team-social-icon a {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+.teammember-title{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 5px 0;
+}
+.teammember-des{
+    color: #5e87eb;
+    font-size: 15px;
+    font-weight: 500;
+}

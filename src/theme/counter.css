@@ -1,0 +1,28 @@
+.counter{
+    padding: 70px 0;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    background: url(../assets/images/imagesall/banner-bg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+}
+.counter-item{
+    text-align: center;
+}
+.counter-number{
+    color: #fff;
+    font-size: 45px;
+    font-weight: 600;
+}
+.counter-number span{
+
+}
+.counter-title{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}

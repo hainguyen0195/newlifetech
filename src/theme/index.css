@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Cabin', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.wrap-content{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+a:hover{
+  text-decoration: none;
+}
+img{
+  max-width: 100%;
+  height: inherit;
+}
+.title-index{
+  text-align: center;
+  font-size: 33px;
+  color: #505060;
+  font-weight: 600;
+  margin: 0 0 30px 0;
+}
+.title-index p{
+    color: #959094;
+    font-size: 14px;
+    font-weight: 500;
+    margin:10px 0 0;
+}
+.padding{
+  padding: 70px 0;
+}
+
+a.btn-a{
+  padding: 8px 25px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 15px rgb(123 104 238 / 15%);
+  color: #ffffff;
+  background-color: #5e87eb;
+  border-radius: 25px;
+  overflow:hidden;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+a.btn-a:before{
+  position:absolute;
+  content:'';
+  width: 100%;
+  height: 100%;
+  background: #3e57d0;
+  left:0;
+  top:0;
+  transition:0.3s all;
+  z-index: -1;
+  transform: scale(0,1);
+}
+a.btn-a:hover:before{
+  transform: scale(1,1);
+}
+
+.contentWapper{
+  position: relative;
+    z-index: 1;
+    background-image: url(../assets/images/imagesall/page-title-bg.jpeg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+.contentWapper::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+  background-color: #5e87eb;
+  background-image: linear-gradient(-135deg, #611bdd 0%, #5e87eb 100%);
+}
+.page-title-box{
+  width:100%;
+  text-align: center;
+  padding: 50px 0 0;
+}
+.page-title-content{
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 600;
+}
+.breadcrumb{
+  background: transparent;
+  margin:  0;
+}
+.breadcrumb li{
+  padding: 0 10px;
+  color: #ffffff;
+  position: relative;
+  font-weight: 400;
+  font-size: 17px;
+}
+.breadcrumb li a{
+  color:#fff;
+}
+.btn-totop{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  color:#fff;
+  background-color: #5e87eb;
+  position:fixed;
+  bottom: 50px;
+  right:10px;
+  cursor:pointer;
+}
