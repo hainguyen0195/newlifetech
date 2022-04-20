@@ -5,37 +5,51 @@ import { faTwitter,faFacebookF, } from '@fortawesome/free-brands-svg-icons';
 import { faLink} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/teammember.css';
-const listTeammember = [
-    { id: 1, icon: images.Teammember1, name: 'Lewis Lucas', des:'IT Manager', socicalFace:'#facebook',socicalTwitter:'#twitter',socicalLinkedin:'#linkedin',},
-    { id: 2, icon: images.Teammember1, name: 'Arturo Fuller', des:'Service Manager', socicalFace:'#facebook',socicalTwitter:'#twitter',socicalLinkedin:'#linkedin',},
-    { id: 3, icon: images.Teammember1, name: 'Velma Cain', des:'Managing Director', socicalFace:'#facebook',socicalTwitter:'#twitter',socicalLinkedin:'#linkedin',},
-    { id: 4, icon: images.Teammember1, name: 'Marc Gibbs', des:'Executive Assistant', socicalFace:'#facebook',socicalTwitter:'#twitter',socicalLinkedin:'#linkedin',},
-];
+
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
+import {db,storage} from "../config";
+import { collection, query, getDocs } from "firebase/firestore";
 
 class Teammember extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listTeammember:listTeammember
+         listTeammember:[]
       };
-      // This binding is necessary to make `this` work in the callback
-      //this.handleClick = this.handleClick.bind(this);
+    }
+    componentDidMount(){
+        this.getData();
+    }
+    getData = async () => {
+        const q = query(collection(db, "teammember"));
+        let querySnapshot = await getDocs(q);
+        const listmemb=[];
+
+        querySnapshot.forEach((doc) => {
+            let serv = doc.data();
+            listmemb.push(serv);
+            serv['id']=(doc.id);
+            this.setState({listTeammember: listmemb,id:doc.id})
+        });
     }
     render() {
         return (
             <>
                 <div className='teammember'>
                     <div className="title-index">Expert Team Member</div>
-                    <div className='wrap-content d-flex align-items-center justify-content-between'>
-                        <div className="row">
+                    <div className='wrap-content'>
+                        <OwlCarousel className='owl-theme teammember-owl' loop margin={15} items={4} autoplay nav={true} dots={false}>
                             {this.state.listTeammember.map(teammember => {
-                                return  <div className="col-md-3 col-sm-4 col-xs-6" key={teammember.id}>
+                                return  <div className="teammember-col" key={teammember.id}>
                                             <div className="teammember-item">
                                                 <div className="teammember-icon">
-                                                    <Link to="/" title='photo'><img src={teammember.icon} /></Link>
+                                                    <Link to="/" title='photo'><img src={teammember.photo} /></Link>
                                                     <div className="team-social-icon">
                                                         <a href={teammember.socicalFace} className="social-color-1"><FontAwesomeIcon icon={faTwitter} /></a>
-                                                        <a href={teammember.socicalTwitter} className="social-color-1"><FontAwesomeIcon icon={faFacebookF} /></a>
+                                                        <a href={teammember.socicalTelegram} className="social-color-1"><FontAwesomeIcon icon={faFacebookF} /></a>
                                                         <a href={teammember.socicalLinkedin} className="social-color-1"><FontAwesomeIcon icon={faLink} /></a>
                                                     </div>
                                                 </div>
@@ -48,7 +62,7 @@ class Teammember extends React.Component {
                                             </div>
                                         </div>
                             })}
-                        </div>
+                        </OwlCarousel>
                     </div>
                 </div>
             </>

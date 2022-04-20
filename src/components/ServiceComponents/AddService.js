@@ -1,42 +1,24 @@
 import React, { Children } from "react";
-import {db,storage} from "./config";
+import {db,storage} from "../../config";
 
 import { collection, query, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-class Firedata extends React.Component {
+class AddService extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        name:'',
+        des:'',
+        images:'',
       id:[],
-      developers: [],
-      images:'',
+      services: [],
       photo:'',
     };
     this.handleSubmit=this.handleSubmit.bind(this);
     this.handleChangephoto=this.handleChangephoto.bind(this);
-
-    this.getData();
   }
 
-  getData = async () => {
-    const q = query(collection(db, "developers"));
-    let querySnapshot = await getDocs(q);
-    const listdev=[];
-    querySnapshot.forEach((doc) => {
-      //console.log(doc.id);
-      let newsdev = doc.data();
-      listdev.push(newsdev);
-      newsdev['id']=(doc.id);
-      this.setState({developers: listdev,id:doc.id})
-    });
-
-    // getDocs(q).then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     console.log(doc.id, " => ", doc.data());
-    //   });
-    // }).catch(err => console.error(err))
-  }
   handleChangephoto = e => {
     this.setState({images: e.target.files[0]});
   }
@@ -49,13 +31,18 @@ class Firedata extends React.Component {
         alert('name null');
         errorbase=true;
     }
+    if(this.state.des==''){
+        alert('des null');
+        errorbase=true;
+    }
     if(this.state.images==''){
       alert('image null');
       errorbase=true;
     }
     if(!errorbase){
       let name = this.refs.name.value;
-      const uploadTask = storage.ref(`images/${this.state.images.name}`).put(this.state.images);
+      let des = this.refs.des.value;
+      const uploadTask = storage.ref(`images-service/${this.state.images.name}`).put(this.state.images);
       uploadTask.on(
         "state_changed",
         snapshot => {},
@@ -64,13 +51,15 @@ class Firedata extends React.Component {
         },
         async ()=> {
           await storage
-            .ref('images')
+            .ref('images-service')
             .child(this.state.images.name)
             .getDownloadURL()
             .then(url=>{
               this.setState({photo: url});
-              db.collection('developers').add({
+             
+              db.collection('services').add({
                 name:name,
+                des:des,
                 photo:this.state.photo,
               })
               .then(()=>{
@@ -82,6 +71,7 @@ class Firedata extends React.Component {
     }
 
     this.refs.name.value = "";
+    this.refs.des.value = "";
     this.refs.photo.value = "";
   };
   render() {
@@ -89,24 +79,11 @@ class Firedata extends React.Component {
     //console.log(developers);
     return (
       <>
+        <div className="padding">
         <div className="wrap-content">
-            <h1>List developers</h1>
-            <div>
-                  {this.state.developers.map(dev => {
-                  return  <div className="col-md-3 col-sm-4 col-xs-6" key={dev.id}>
-                               <h3 className="name-title">
-                                    name: {dev.name} 
-                                </h3>
-                               <h5 className="dev-title">
-                                    <img src={dev.photo} />
-                                </h5>
-                          </div>
-                  })}
-            </div>
-            
-            <h1>Add new team member here</h1>
+            <h1>Add new srvice here</h1>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-row">
+                <div className="form-row row">
                   <div className="form-group col-md-6">
                     <label>Name</label>
                     <input
@@ -118,9 +95,20 @@ class Firedata extends React.Component {
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <label>Role</label>
+                    <label>Des</label>
+                    <input
+                      type="text"
+                      ref="des"
+                      className="form-control"
+                      placeholder="Name"
+                      onChange={(e)=> {this.setState({des:e.target.value})} }
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>photo</label>
                     <input
                       type="file"
+                      ref="des"
                       onChange={this.handleChangephoto}
                     />
                   </div>
@@ -131,10 +119,11 @@ class Firedata extends React.Component {
                 </button>
               </form>
         </div>
+        </div>
       </>
     );
   }
 }
 
-export default Firedata;
+export default AddService;
 

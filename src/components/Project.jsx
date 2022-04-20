@@ -5,25 +5,30 @@ import { faEye,faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/project.css';
 
-const listProject=[
-    { id: 1, icon: images.Project1, name: 'Project 1 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    { id: 2, icon: images.Project2, name: 'Project 2 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    { id: 3, icon: images.Project3, name: 'Project 3 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    { id: 4, icon: images.Project1, name: 'Project 4 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    { id: 5, icon: images.Project2, name: 'Project 5 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    { id: 6, icon: images.Project3, name: 'Project 6 - Mobile App Development', des:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-]
+import {db,storage} from "../config";
+import { collection, query, getDocs } from "firebase/firestore";
 
 class Project extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-           listProject:listProject
+           listProject:[]
         };
-        // This binding is necessary to make `this` work in the callback
-        //this.handleClick = this.handleClick.bind(this);
-      }
-
+    }
+    componentDidMount(){
+        this.getData();
+    }
+    getData = async () => {
+        const q = query(collection(db, "project"));
+        let querySnapshot = await getDocs(q);
+        const listproj=[];
+        querySnapshot.forEach((doc) => {
+            let serv = doc.data();
+            listproj.push(serv);
+            serv['id']=(doc.id);
+            this.setState({listProject: listproj,id:doc.id})
+        });
+    }
       render() {
         return (
             <>
@@ -35,7 +40,7 @@ class Project extends React.Component {
                                 return  <div className="col-md-6 col-sm-6 col-xs-12 col-project" key={project.id}>
                                             <div className="project-item d-flex align-items-center justify-content-between">
                                                 <div className="project-icon">
-                                                     <Link to="/" title='photo'><img src={project.icon} /></Link>
+                                                     <Link to="/" title='photo'><img src={project.photo} /></Link>
                                                         <Link className="view-project" to="/" title='' ><FontAwesomeIcon icon={faSearchPlus} /> View Project</Link>
                                                 </div>
                                                 <div className="project-info">
