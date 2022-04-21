@@ -13,6 +13,36 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
+const options = {
+      margin: 30,
+      loop:true,
+      responsiveClass: true,
+      nav: true,
+      dots: false,
+      autoplay: true,
+      smartSpeed: 1000,
+      responsive: {
+          0: {
+              items: 1,
+              margin: 0,
+          },
+          400: {
+              items: 2,
+              margin: 10,
+          },
+          700: {
+              items: 3,
+              margin: 10,
+          },
+          900: {
+              items: 4,
+          },
+          1200: {
+              items: 4,
+  
+          }
+      },
+  };
 class Teammember extends React.Component {
     constructor(props) {
       super(props);
@@ -41,7 +71,7 @@ class Teammember extends React.Component {
                 <div className='teammember'>
                     <div className="title-index">Expert Team Member</div>
                     <div className='wrap-content'>
-                        <OwlCarousel className='owl-theme teammember-owl' loop margin={15} items={4} autoplay nav={true} dots={false}>
+                        <OwlCarousel className='owl-theme teammember-owl' {...options}>
                             {this.state.listTeammember.map(teammember => {
                                 return  <div className="teammember-col" key={teammember.id}>
                                             <div className="teammember-item">

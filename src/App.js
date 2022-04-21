@@ -21,7 +21,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
   //import Firedata from './Firedata';
   import AddService from './components/ServiceComponents/AddService';
   import EditService from './components/ServiceComponents/EditService';
-
+  
+  import ProjectPage from './components/ProjectComponents/ProjectPage';
 
   function App() {
       return (
@@ -44,6 +45,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
             <Route path="/servicedetail" component={ServicePageDetail}></Route>
             <Route path="/addService" component={AddService}></Route>
             <Route path="/editService" component={EditService}></Route>
+            <Route path="/project" component={ProjectPage}></Route>
           </Switch>
         <Footer />
         <ScrollButton />

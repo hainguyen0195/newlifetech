@@ -11,6 +11,36 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
+const options = {
+    margin: 30,
+    loop:true,
+    responsiveClass: true,
+    nav: false,
+    dots: false,
+    autoplay: true,
+    smartSpeed: 1000,
+    responsive: {
+        0: {
+            items: 1,
+            margin: 0,
+        },
+        400: {
+            items: 1,
+            margin: 0,
+        },
+        700: {
+            items: 2,
+            margin: 10,
+        },
+        900: {
+            items: 3,
+        },
+        1200: {
+            items: 3,
+
+        }
+    },
+};
 
 class News extends React.Component {
     constructor(props) {
@@ -39,8 +69,8 @@ class News extends React.Component {
             <>
                 <div className='news padding'>
                     <div className="title-index">New Posts</div>
-                    <div className='wrap-content d-flex align-items-center justify-content-between'>
-                        <OwlCarousel className='owl-theme' loop margin={15} items={3} autoplay nav>
+                    <div className='wrap-content'>
+                        <OwlCarousel className='owl-theme' {...options}>
                             {this.state.listNews.map(news => {
                                 return  <div className="news-col" key={news.id}>
                                             <div className="news-item">

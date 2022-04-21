@@ -5,17 +5,14 @@ import { faTwitter,faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faLink ,faMapMarkerAlt,faPhoneAlt ,faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/footer.css';
+import {db,storage} from "../config";
+import { collection, query, getDocs } from "firebase/firestore";
+
 const listSocial = [
     { id: 1, icon: <FontAwesomeIcon icon={faFacebookF} />, name: 'Facebook',  link:'#facebook'},
     { id: 2, icon: <FontAwesomeIcon icon={faTwitter} />, name: 'Twitter', link:'#twitter'},
     { id: 3, icon: <FontAwesomeIcon icon={faLink} />, name: 'Linkedin', link:'#linkedin'},
     { id: 4, icon: <FontAwesomeIcon icon={faTwitter} />, name: 'Twitter',  link:'#twitter'},
-];
-
-const listServices = [
-    { id: 1, link: 'service-mobile-app', name: 'Mobile App Development', },
-    { id: 2, link: 'service-pc-app', name: 'Pc App Development', },
-    { id: 3, link: 'service-iot-app', name: 'IoT', },
 ];
 
 const listQuiklink = [
@@ -25,14 +22,13 @@ const listQuiklink = [
     { id: 4, link: 'service-iot-app', name: 'Terms & Conditions', },
 ];
 
-
 class Footer extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
             desFooter:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco consectetur laboris.',
             listSocial:listSocial,
-            listServices:listServices,
+            listServices:[],
             listQuiklink:listQuiklink,
             adress:'Quang Trung Software City, Building 8, Room 21-20 Ward 12, Ho Chi Minh City, VietNam',
             email:'info@lifetechvn.net',
@@ -46,6 +42,21 @@ class Footer extends React.Component {
       this.handleChangeEmail = this.handleChangeEmail.bind(this);
       this.handleChangeMess = this.handleChangeMess.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    componentDidMount(){
+        this.getData();
+    }
+    getData = async () => {
+        const q = query(collection(db, "services"));
+        let querySnapshot = await getDocs(q);
+        const listser=[];
+
+        querySnapshot.forEach((doc) => {
+            let news = doc.data();
+            listser.push(news);
+            news['id']=(doc.id);
+            this.setState({listServices: listser,id:doc.id})
+        });
     }
 
     handleChangeName(event) {

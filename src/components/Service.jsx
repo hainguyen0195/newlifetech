@@ -10,6 +10,40 @@ import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
+const options = {
+    margin: 30,
+    loop:true,
+    responsiveClass: true,
+    nav: false,
+    dots: false,
+    autoplay: true,
+    smartSpeed: 1000,
+    responsive: {
+        0: {
+            items: 1,
+            margin: 0,
+        },
+        400: {
+            items: 1,
+            margin: 0,
+        },
+        700: {
+            items: 2,
+            margin: 10,
+        },
+        900: {
+            items: 3,
+        },
+        1200: {
+            items: 3,
+
+        }
+    },
+};
 
 class Service extends React.Component {
     constructor(props) {
@@ -37,11 +71,11 @@ class Service extends React.Component {
                 <div className='service'>
                     <div className='wrap-content'>
                         <div className="title-index">Our Services</div>
-                        <div className="row">
+                        <OwlCarousel className='owl-theme' {...options}>
                             {this.state.listService.map(service => {
-                                return <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' service={service}/>
+                                return <ServiceItrem class='' service={service}/>
                             })}
-                        </div>
+                        </OwlCarousel>
                     </div>
                 </div>
             </>

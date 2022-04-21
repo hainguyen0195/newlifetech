@@ -11,6 +11,12 @@ class ScrollButton extends React.Component {
         this.toggleVisible = this.toggleVisible.bind(this);
         this.scrollToTop = this.scrollToTop.bind(this);
     }
+    componentDidMount(){
+        window.addEventListener('scroll', this.toggleVisible);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.toggleVisible);
+    }
     
     toggleVisible() {
         const scrolled = document.documentElement.scrollTop;

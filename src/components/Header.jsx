@@ -2,33 +2,46 @@ import React, { useState } from 'react';
 import { Link ,NavLink } from "react-router-dom";
 import { Button } from 'bootstrap-4-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown,faBars} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/header.css';
+import {db,storage} from "../config";
+import { collection, query, getDocs } from "firebase/firestore";
 
-const listServices = [
-    { id: 1, link: 'service-mobile-app', name: 'Mobile App Development', },
-    { id: 2, link: 'service-pc-app', name: 'Pc App Development', },
-    { id: 3, link: 'service-iot-app', name: 'IoT', },
-];
 
 class Header extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
          logoHeader:images.Logo,
-         listServices:listServices,
+         listServices:[],
          scrolling:'',
+         openmenumobile: true,
       };
       // This binding is necessary to make `this` work in the callback
       this.handleScroll = this.handleScroll.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     } 
-    componentDidMount() {
+    // method sẽ chạy sau khi Component render lầu đầu tiên
+    componentDidMount(){
+        this.getData();
         window.addEventListener('scroll', this.handleScroll);
     }
-    
+    // đây là method sẽ chạy sau cùng, trước khi toàn bộ Component bị destroy, đây là nơi thích hợp để chúng ta thực hiện clear và giải phóng resource
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+    }
+    getData = async () => {
+        const q = query(collection(db, "services"));
+        let querySnapshot = await getDocs(q);
+        const listser=[];
+
+        querySnapshot.forEach((doc) => {
+            let news = doc.data();
+            listser.push(news);
+            news['id']=(doc.id);
+            this.setState({listServices: listser,id:doc.id})
+        });
     }
     handleScroll(event) {
         if (window.scrollY === 0 && this.state.scrolling === 'is-sticky') {
@@ -38,16 +51,28 @@ class Header extends React.Component {
             this.setState({scrolling: 'is-sticky'});
         }
     }
+    handleClick () {
+        if(this.state.openmenumobile==true){ 
+            this.setState({openmenumobile:false})
+        }else{
+            this.setState({openmenumobile:true})
+        }
+        console.log('clsick');
+    }
     
     render() {
         return (
             <>
                 <div className='header' id={this.state.scrolling}>
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
+                        <div className='btn-menu' onClick={this.handleClick}>
+                            <FontAwesomeIcon icon={faBars} />
+                        </div>
                         <div className="logo">
                             <Link className="logo-header" to="/" title='Logo'><img src={this.state.logoHeader} /></Link>
                         </div>
-                        <ul className="menu d-flex align-items-center justify-content-end">
+
+                        <ul className="menu d-flex align-items-center justify-content-end " id={this.state.openmenumobile ? '':'oppen'} >
                             <li>  
                                 <Link to="/" className=''   alt="Home">
                                     Home    

@@ -14,7 +14,7 @@ class ServiceItrem extends React.Component {
                 <div className={this.props.class} key={this.props.service.id}>
                     <div className="service-item">
                         <div className="service-icon">
-                            <Link to="/editService" title='photo'><img src={this.props.service.photo} /></Link>
+                            <Link to="/servicedetail" title='photo'><img src={this.props.service.photo} /></Link>
                         </div>
                         <h3 className="service-title">
                             {this.props.service.name}

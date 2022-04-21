@@ -5,7 +5,7 @@ import * as images from '../../assets/images';
 import '../../theme/service.css';
 
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
-import ServiceItrem from '../../components/ServiceComponents/ServiceItem';
+import ProjectItem from '../../components/ProjectComponents/ProjectItem';
 
 import {db,storage} from "../../config";
 
@@ -16,34 +16,34 @@ class Service extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listService:[]
+         listProject:[]
       };
-      // This binding is necessary to make `this` work in the callback
-      //this.handleClick = this.handleClick.bind(this);
-      this.getData();
+    }
+    componentDidMount(){
+        this.getData();
     }
     getData = async () => {
-        const q = query(collection(db, "services"));
+        const q = query(collection(db, "project"));
         let querySnapshot = await getDocs(q);
-        const listserv=[];
+        const listproject=[];
         querySnapshot.forEach((doc) => {
             //console.log(doc.id);
-            let serv = doc.data();
-            listserv.push(serv);
-            serv['id']=(doc.id);
-            this.setState({listService: listserv,id:doc.id})
+            let project = doc.projectdata();
+            listproject.push(project = doc.project);
+            project = doc.project['id']=(doc.id);
+            this.setState({listProject: listproject,id:doc.id})
         });
     }
     render() {
         return (
             <>
-                <ContentWapper title='Service' />
-                <div className='service'>
+                <ContentWapper title='Project' />
+                <div className='project'>
                     <div className='wrap-content'>
-                        <div className="title-index">Our Services</div>
+                        <div className="title-index">Our Project</div>
                         <div className="row">
-                            {this.state.listService.map(service => {
-                                return <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' service={service} key={service.id} />
+                            {this.state.listProject.map(project => {
+                                return <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} />
                             })}
                         </div>
                     </div>

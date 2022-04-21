@@ -29,25 +29,27 @@ class Skill extends React.Component {
         return (
             <>
                 <div className='skill'>
-                    <div className='wrap-content d-flex align-items-center justify-content-between'>
-                        <div className="col-md-7 col-sm-6 col-xs-12">
-                            <div className="title-skill">Our Skills</div>
-                            <div className="des-skill">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                            <div className="row">
-                                {this.state.listSkill.map(skill => {
-                                    return  <div className="col-md-6 col-sm-6 col-xs-12" key={skill.id}>
-                                                <div className="skill-item" >
-                                                    <h3 className="skill-title">
-                                                        {skill.name}
-                                                        <span style={{width: skill.level }} ></span>
-                                                    </h3>
+                    <div className='wrap-content'>
+                        <div className='row'>
+                            <div className="col-md-7 col-sm-6 col-xs-12">
+                                <div className="title-skill">Our Skills</div>
+                                <div className="des-skill">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                <div className="row">
+                                    {this.state.listSkill.map(skill => {
+                                        return  <div className="col-md-6 col-sm-6 col-xs-12" key={skill.id}>
+                                                    <div className="skill-item" >
+                                                        <h3 className="skill-title">
+                                                            {skill.name}
+                                                            <span style={{width: skill.level }} ></span>
+                                                        </h3>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                })}
+                                    })}
+                                </div>
                             </div>
-                        </div>
-                        <div className="banner-skill col-md-5 col-sm-6 col-xs-12">
-                            <Link to="/" title='Logo'><img src={this.state.bannerSlider} /></Link>
+                            <div className="banner-skill col-md-5 col-sm-6 col-xs-12">
+                                <Link to="/" title='Logo'><img src={this.state.bannerSlider} /></Link>
+                            </div>
                         </div>
                     </div>
                 </div>
