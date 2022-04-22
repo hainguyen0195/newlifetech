@@ -29,6 +29,7 @@ class Footer extends React.Component {
             desFooter:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco consectetur laboris.',
             listSocial:listSocial,
             listServices:[],
+            id:'',
             listQuiklink:listQuiklink,
             adress:'Quang Trung Software City, Building 8, Room 21-20 Ward 12, Ho Chi Minh City, VietNam',
             email:'info@lifetechvn.net',

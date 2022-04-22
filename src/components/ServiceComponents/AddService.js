@@ -11,14 +11,14 @@ class AddService extends React.Component {
         name:'',
         des:'',
         images:'',
-      id:[],
-      services: [],
-      photo:'',
+        id:[],
+        services: [],
+        photo:'',
     };
     this.handleSubmit=this.handleSubmit.bind(this);
     this.handleChangephoto=this.handleChangephoto.bind(this);
   }
-
+  
   handleChangephoto = e => {
     this.setState({images: e.target.files[0]});
   }

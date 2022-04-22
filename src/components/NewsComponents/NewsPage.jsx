@@ -5,18 +5,18 @@ import * as images from '../../assets/images';
 import '../../theme/service.css';
 
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
-import ProjectItem from '../../components/ProjectComponents/ProjectItem';
+import NewsItem from '../../components/NewsComponents/NewsItem';
 
 import {db,storage} from "../../config";
 
 import { collection, query, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-class Service extends React.Component {
+class NewsPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listProject:[],
+         listNews:[],
          id:'',
       };
     }
@@ -24,26 +24,26 @@ class Service extends React.Component {
         this.getData();
     }
     getData = async () => {
-        const q = query(collection(db, "project"));
+        const q = query(collection(db, "news"));
         let querySnapshot = await getDocs(q);
-        const listproj=[];
+        const listnews=[];
         querySnapshot.forEach((doc) => {
-            let serv = doc.data();
-            listproj.push(serv);
-            serv['id']=(doc.id);
-            this.setState({listProject: listproj,id:doc.id})
+            let news = doc.data();
+            listnews.push(news);
+            news['id']=(doc.id);
+            this.setState({listNews: listnews,id:doc.id})
         });
     }
     render() {
         return (
             <>
-                <ContentWapper title='Project' />
-                <div className='project'>
+                <ContentWapper title='News' />
+                <div className='news'>
                     <div className='wrap-content'>
-                        <div className="title-index">Our Project</div>
+                        <div className="title-index">Our News</div>
                         <div className="row">
-                            {this.state.listProject.map(project => {
-                                return <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} />
+                            {this.state.listNews.map(news => {
+                                return <NewsItem class='col-md-4 col-sm-6 col-xs-12 col-news' news={news} key={news.id} />
                             })}
                         </div>
                     </div>
@@ -53,4 +53,4 @@ class Service extends React.Component {
     }
 }
 
-export default Service;
+export default NewsPage;

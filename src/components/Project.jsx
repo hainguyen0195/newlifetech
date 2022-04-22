@@ -8,11 +8,14 @@ import '../theme/project.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
+import ProjectItem from '../components/ProjectComponents/ProjectItem';
+
 class Project extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-           listProject:[]
+           listProject:[],
+           id:'',
         };
     }
     componentDidMount(){
@@ -37,25 +40,7 @@ class Project extends React.Component {
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
                         <div className="row">
                             {this.state.listProject.map(project => {
-                                return  <div className="col-md-6 col-sm-6 col-xs-12 col-project" key={project.id}>
-                                            <div className="project-item d-flex align-items-center justify-content-between">
-                                                <div className="project-icon">
-                                                     <Link to="/" title='photo'><img src={project.photo} /></Link>
-                                                        <Link className="view-project" to="/" title='' ><FontAwesomeIcon icon={faSearchPlus} /> View Project</Link>
-                                                </div>
-                                                <div className="project-info">
-                                                    <h3 className="project-title">
-                                                        {project.name}
-                                                    </h3>
-                                                    <div className="project-des">
-                                                        {project.des}
-                                                    </div>
-                                                    <div className="project-seemore">
-                                                        <Link to="/" title='photo'><FontAwesomeIcon icon={faEye} /> Detail </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                return <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} />
                             })}
                         </div>
                     </div>

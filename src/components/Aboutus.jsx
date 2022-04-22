@@ -23,18 +23,18 @@ class Aboutus extends React.Component {
     componentDidMount(){
         //this.getData();
     }
-    getData = async () => {
-        const q = query(collection(db, "aboutus"));
-        let querySnapshot = await getDocs(q);
-        const listabout=[];
+    // getData = async () => {
+    //     const q = query(collection(db, "aboutus"));
+    //     let querySnapshot = await getDocs(q);
+    //     const listabout=[];
 
-        querySnapshot.forEach((doc) => {
-            let about = doc.data();
-            listabout.push(about);
-            about['id']=(doc.id);
-            this.setState({listAboutus: listabout,id:doc.id})
-        });
-    }
+    //     querySnapshot.forEach((doc) => {
+    //         let about = doc.data();
+    //         listabout.push(about);
+    //         about['id']=(doc.id);
+    //         this.setState({listAboutus: listabout,id:doc.id})
+    //     });
+    // }
     render() {
         return (
             <>

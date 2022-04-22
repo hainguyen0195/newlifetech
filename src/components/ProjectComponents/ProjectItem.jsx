@@ -14,8 +14,8 @@ class ProjectItem extends React.Component {
                 <div className={this.props.class} key={this.props.project.id}>
                     <div className="project-item d-flex align-items-center justify-content-between">
                         <div className="project-icon">
-                                <Link to="/" title='photo'><img src={this.props.project.photo} /></Link>
-                                <Link className="view-project" to="/" title='' ><FontAwesomeIcon icon={faSearchPlus} /> View Project</Link>
+                                <Link to={`/project/${this.props.project.id}`} title='photo'><img src={this.props.project.photo} /></Link>
+                                <Link className="view-project" to={`/project/${this.props.project.id}`} title='' ><FontAwesomeIcon icon={faSearchPlus} /> View Project</Link>
                         </div>
                         <div className="project-info">
                             <h3 className="project-title">
@@ -25,7 +25,7 @@ class ProjectItem extends React.Component {
                                 {this.props.project.des}
                             </div>
                             <div className="project-seemore">
-                                <Link to="/" title='photo'><FontAwesomeIcon icon={faEye} /> Detail </Link>
+                                <Link to={`/project/${this.props.project.id}`} title='photo'><FontAwesomeIcon icon={faEye} /> Detail </Link>
                             </div>
                         </div>
                     </div>

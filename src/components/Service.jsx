@@ -14,44 +14,50 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-const options = {
-    margin: 30,
-    loop:true,
-    responsiveClass: true,
-    nav: false,
-    dots: false,
-    autoplay: true,
-    smartSpeed: 1000,
-    responsive: {
-        0: {
-            items: 1,
-            margin: 0,
-        },
-        400: {
-            items: 1,
-            margin: 0,
-        },
-        700: {
-            items: 2,
-            margin: 10,
-        },
-        900: {
-            items: 3,
-        },
-        1200: {
-            items: 3,
 
-        }
-    },
-};
 
 class Service extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        listService:[]
+        listService:[],
+        id:'',
+        options:[],
      };
-     this.getData();
+    }
+    componentDidMount(){
+        const options = {
+            margin: 30,
+            loop:true,
+            responsiveClass: true,
+            nav: false,
+            dots: false,
+            autoplay: true,
+            smartSpeed: 1000,
+            responsive: {
+                0: {
+                    items: 1,
+                    margin: 0,
+                },
+                400: {
+                    items: 1,
+                    margin: 0,
+                },
+                700: {
+                    items: 2,
+                    margin: 10,
+                },
+                900: {
+                    items: 3,
+                },
+                1200: {
+                    items: 3,
+        
+                }
+            },
+        };
+        this.setState({options:options,})
+        this.getData();
     }
     getData = async () => {
         const q = query(collection(db, "services"));
@@ -65,15 +71,17 @@ class Service extends React.Component {
             this.setState({listService: listserv,id:doc.id})
         });
     }
+   
     render() {
+        
         return (
             <>
                 <div className='service'>
                     <div className='wrap-content'>
                         <div className="title-index">Our Services</div>
-                        <OwlCarousel className='owl-theme' {...options}>
+                        <OwlCarousel className='owl-theme' {...this.state.options}>
                             {this.state.listService.map(service => {
-                                return <ServiceItrem class='' service={service}/>
+                                return <ServiceItrem class='' service={service} key={service.id}/>
                             })}
                         </OwlCarousel>
                     </div>

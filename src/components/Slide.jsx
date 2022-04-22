@@ -11,8 +11,6 @@ class Slide extends React.Component {
          desSlider:'We provide the best software development services from VietNam.',
          bannerSlider:images.Bannerslider
       };
-      // This binding is necessary to make `this` work in the callback
-      //this.handleClick = this.handleClick.bind(this);
     }
     render() {
         return (

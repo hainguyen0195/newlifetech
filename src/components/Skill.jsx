@@ -22,8 +22,6 @@ class Skill extends React.Component {
          listSkill:listSkill,
          bannerSlider:images.Bannerskill
       };
-      // This binding is necessary to make `this` work in the callback
-      //this.handleClick = this.handleClick.bind(this);
     }
     render() {
         return (

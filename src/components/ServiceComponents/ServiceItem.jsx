@@ -1,20 +1,27 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
+
 class ServiceItrem extends React.Component {
     constructor(props) {
         super(props);
         this.state={
         };  
+        //this.handleClick=this.handleClick.bind(this);
     }
+    // handleClick = (service) => { 
+    //     this.props.history.push(`/service/${service.id}`)
+    // }
     render() {
         return (
             <>
-                <div className={this.props.class} key={this.props.service.id}>
+                <div className={this.props.class} >
                     <div className="service-item">
                         <div className="service-icon">
-                            <Link to="/servicedetail" title='photo'><img src={this.props.service.photo} /></Link>
+                        <Link to={`/service/${this.props.service.id}`} title='link'>
+                            <img src={this.props.service.photo} />
+                        </Link>
                         </div>
                         <h3 className="service-title">
                             {this.props.service.name}
@@ -23,7 +30,7 @@ class ServiceItrem extends React.Component {
                             {this.props.service.des}
                         </div>
                         <div className="service-seemore">
-                            <Link to="/servicedetail" title='photo'>Seemore <FontAwesomeIcon icon={faAngleDoubleRight} /></Link>
+                            <Link to={`/service/${this.props.service.id}`} title='link'>Seemore <FontAwesomeIcon icon={faAngleDoubleRight} /></Link>
                         </div>
                     </div>
                 </div>
@@ -32,4 +39,4 @@ class ServiceItrem extends React.Component {
     }
 }
 
-export default ServiceItrem;
+export default withRouter(ServiceItrem);

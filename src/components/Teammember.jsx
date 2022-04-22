@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter,faFacebookF, } from '@fortawesome/free-brands-svg-icons';
+import { faTelegramPlane,faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faLink} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/teammember.css';
@@ -13,44 +13,47 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
-const options = {
-      margin: 30,
-      loop:true,
-      responsiveClass: true,
-      nav: true,
-      dots: false,
-      autoplay: true,
-      smartSpeed: 1000,
-      responsive: {
-          0: {
-              items: 1,
-              margin: 0,
-          },
-          400: {
-              items: 2,
-              margin: 10,
-          },
-          700: {
-              items: 3,
-              margin: 10,
-          },
-          900: {
-              items: 4,
-          },
-          1200: {
-              items: 4,
-  
-          }
-      },
-  };
 class Teammember extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listTeammember:[]
+         listTeammember:[],
+         id:'',
+         options:[],
       };
     }
     componentDidMount(){
+        const options = {
+            margin: 30,
+            loop:true,
+            responsiveClass: true,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            smartSpeed: 1000,
+            responsive: {
+                0: {
+                    items: 1,
+                    margin: 0,
+                },
+                400: {
+                    items: 2,
+                    margin: 10,
+                },
+                700: {
+                    items: 3,
+                    margin: 10,
+                },
+                900: {
+                    items: 4,
+                },
+                1200: {
+                    items: 4,
+        
+                }
+            },
+        };
+        this.setState({options: options});
         this.getData();
     }
     getData = async () => {
@@ -71,16 +74,28 @@ class Teammember extends React.Component {
                 <div className='teammember'>
                     <div className="title-index">Expert Team Member</div>
                     <div className='wrap-content'>
-                        <OwlCarousel className='owl-theme teammember-owl' {...options}>
+                        <OwlCarousel className='owl-theme teammember-owl' {...this.state.options}>
                             {this.state.listTeammember.map(teammember => {
                                 return  <div className="teammember-col" key={teammember.id}>
                                             <div className="teammember-item">
                                                 <div className="teammember-icon">
                                                     <Link to="/" title='photo'><img src={teammember.photo} /></Link>
                                                     <div className="team-social-icon">
-                                                        <a href={teammember.socicalFace} className="social-color-1"><FontAwesomeIcon icon={faTwitter} /></a>
-                                                        <a href={teammember.socicalTelegram} className="social-color-1"><FontAwesomeIcon icon={faFacebookF} /></a>
-                                                        <a href={teammember.socicalLinkedin} className="social-color-1"><FontAwesomeIcon icon={faLink} /></a>
+                                                        {
+                                                            teammember.socicalFace ?
+                                                            <a href={teammember.socicalFace} className="social-color-1"><FontAwesomeIcon icon={faFacebookF} /></a>    
+                                                            : ''
+                                                        }
+                                                        {
+                                                            teammember.socicalTelegram ?
+                                                            <a href={teammember.socicalTelegram} className="social-color-1"><FontAwesomeIcon icon={faTelegramPlane} /></a>    
+                                                            : ''
+                                                        }
+                                                        {
+                                                            teammember.socicalLinkedin ?
+                                                            <a href={teammember.socicalLinkedin} className="social-color-1"><FontAwesomeIcon icon={faLink} /></a>    
+                                                            : ''
+                                                        }
                                                     </div>
                                                 </div>
                                                 <h3 className="teammember-title">

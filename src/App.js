@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-dom";
 
+  import ScrollToTop from './ScrollToTop';
   import Header from './components/Header';
   import Slide from './components/Slide';
   import Aboutus from './components/Aboutus';
@@ -18,38 +19,38 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
   import ServicePage from './components/ServiceComponents/ServicePage';
   import ServicePageDetail from './components/ServiceComponents/ServicePageDetail';
   import ScrollButton from './components/LayoutComponents/ScrollButton';
-  //import Firedata from './Firedata';
-  import AddService from './components/ServiceComponents/AddService';
-  import EditService from './components/ServiceComponents/EditService';
   
   import ProjectPage from './components/ProjectComponents/ProjectPage';
+  import ProjectPageDetail from './components/ProjectComponents/ProjectPageDetail';
+  import NewsPage from './components/NewsComponents/NewsPage';
 
   function App() {
       return (
         <>
-        <Header />
-          <Route index path="/" exact>
-            <Slide />
-            <Aboutus />
-            <Service />
-            <Skill />
-            <Project />
-            <Counter />
-            <Teammember />
-            <Activites />
-            <News />
-          </Route>
-          <Switch>
-            <Route path="/about" component={About}></Route>
-            <Route path="/service" component={ServicePage}></Route>
-            <Route path="/servicedetail" component={ServicePageDetail}></Route>
-            <Route path="/addService" component={AddService}></Route>
-            <Route path="/editService" component={EditService}></Route>
-            <Route path="/project" component={ProjectPage}></Route>
-          </Switch>
-        <Footer />
-        <ScrollButton />
-      
+        <ScrollToTop>
+          <Header />
+            <Route index path="/" exact>
+              <Slide />
+              <Aboutus />
+              <Service />
+              <Skill />
+              <Project />
+              <Counter />
+              <Teammember />
+              <Activites />
+              <News />
+            </Route>
+            <Switch>
+              <Route path="/about" component={About}></Route>
+              <Route path="/service" component={ServicePage} exact></Route>
+              <Route path="/service/:id" ><ServicePageDetail /></Route>
+              <Route path="/project" component={ProjectPage} exact></Route>
+              <Route path="/project/:id" ><ProjectPageDetail /></Route>
+              <Route path="/news" component={NewsPage}></Route>
+            </Switch>
+          <Footer />
+          <ScrollButton />
+        </ScrollToTop>
       </>
       );
     }

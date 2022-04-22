@@ -11,45 +11,49 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
-const options = {
-    margin: 30,
-    loop:true,
-    responsiveClass: true,
-    nav: false,
-    dots: false,
-    autoplay: true,
-    smartSpeed: 1000,
-    responsive: {
-        0: {
-            items: 1,
-            margin: 0,
-        },
-        400: {
-            items: 1,
-            margin: 0,
-        },
-        700: {
-            items: 2,
-            margin: 10,
-        },
-        900: {
-            items: 3,
-        },
-        1200: {
-            items: 3,
 
-        }
-    },
-};
 
 class News extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listNews:[]
+         listNews:[],
+         id:'',
+         options:'',
       };
     }
     componentDidMount(){
+        const options = {
+            margin: 30,
+            loop:true,
+            responsiveClass: true,
+            nav: false,
+            dots: false,
+            autoplay: true,
+            smartSpeed: 1000,
+            responsive: {
+                0: {
+                    items: 1,
+                    margin: 0,
+                },
+                400: {
+                    items: 1,
+                    margin: 0,
+                },
+                700: {
+                    items: 2,
+                    margin: 10,
+                },
+                900: {
+                    items: 3,
+                },
+                1200: {
+                    items: 3,
+        
+                }
+            },
+        };
+        this.setState({options: options});
         this.getData();
     }
     getData = async () => {
@@ -65,12 +69,13 @@ class News extends React.Component {
         });
     }
     render() {
+        
         return (
             <>
                 <div className='news padding'>
                     <div className="title-index">New Posts</div>
                     <div className='wrap-content'>
-                        <OwlCarousel className='owl-theme' {...options}>
+                        <OwlCarousel className='owl-theme' {...this.state.options}>
                             {this.state.listNews.map(news => {
                                 return  <div className="news-col" key={news.id}>
                                             <div className="news-item">

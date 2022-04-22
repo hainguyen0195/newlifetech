@@ -110,3 +110,56 @@ a.view-project:hover:before {
 .project-seemore a:hover{
     padding: 0 0 0 10px;
 }
+
+.title-detail-project{
+    text-transform: capitalize;
+    font-size:18px;
+    font-weight: bold;
+    margin:0 0 10px;
+}
+.des-detail-project{
+    margin:     0px 0 10px;
+    color: #707070;
+    font-size: 14px;
+    line-height:1.8;
+}
+.imga-detail-project img{
+    border-radius: 15px 0 15px 0;
+}
+.title-img-detail-project{
+    color: #78a2fc;
+    font-size: 14px;
+    font-weight: 600;
+    padding:15px 0px;
+    text-align: center;
+}
+.video-responsive iframe{
+    width: 100% !important;
+}
+
+.portfolio-info {
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #757575;
+}
+.portfolio-info .info-head {
+    font-weight: 700;
+    margin-right: 7px;
+    font-style: normal;
+    color: #333;
+}
+.row-project-detail{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin:0 0 30px 0;
+}
+.prject-detail-left{
+    width: 35%;
+    position: sticky;
+    top: 80px;
+}
+.prject-detail-right{
+    width: 65%;
+    padding:0 0 0 20px;
+}

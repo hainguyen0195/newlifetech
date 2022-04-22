@@ -16,18 +16,18 @@ class Service extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listService:[]
+         listService:[],
+         id:'',
       };
-      // This binding is necessary to make `this` work in the callback
-      //this.handleClick = this.handleClick.bind(this);
-      this.getData();
+    }
+    componentDidMount(){
+        this.getData();
     }
     getData = async () => {
         const q = query(collection(db, "services"));
         let querySnapshot = await getDocs(q);
         const listserv=[];
         querySnapshot.forEach((doc) => {
-            //console.log(doc.id);
             let serv = doc.data();
             listserv.push(serv);
             serv['id']=(doc.id);
