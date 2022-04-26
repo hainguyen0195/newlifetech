@@ -74,7 +74,8 @@ ul.menu li a:hover{
     border: none;
     top: 80px;
     left: 0;
-    width: 230px;
+    width:100%;
+    max-width: 230px;
     z-index: 99;
     display: block;
     opacity: 0;

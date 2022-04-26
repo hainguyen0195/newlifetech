@@ -38,7 +38,7 @@ class NewsPage extends React.Component {
         return (
             <>
                 <ContentWapper title='News' />
-                <div className='news'>
+                <div className='news padding'>
                     <div className='wrap-content'>
                         <div className="title-index">Our News</div>
                         <div className="row">

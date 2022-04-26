@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link ,NavLink } from "react-router-dom";
 import { Button } from 'bootstrap-4-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown,faBars} from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown,faBars,faTimes} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/header.css';
 import {db,storage} from "../config";
@@ -18,19 +18,20 @@ class Header extends React.Component {
          id:'',
          scrolling:'',
          openmenumobile: true,
+         openmenucat: true,
       };
       this.handleScroll = this.handleScroll.bind(this);
       this.handleClick = this.handleClick.bind(this);
+      this.handleShowmenucat = this.handleShowmenucat.bind(this);
     } 
-    // method sẽ chạy sau khi Component render lầu đầu tiên
     componentDidMount(){
         this.getData();
         window.addEventListener('scroll', this.handleScroll);
     }
-    // đây là method sẽ chạy sau cùng, trước khi toàn bộ Component bị destroy, đây là nơi thích hợp để chúng ta thực hiện clear và giải phóng resource
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
+   
     getData = async () => {
         const q = query(collection(db, "services"));
         let querySnapshot = await getDocs(q);
@@ -58,7 +59,13 @@ class Header extends React.Component {
             this.setState({openmenumobile:true})
         }
     }
-  
+    handleShowmenucat () {
+        if(this.state.openmenucat==true){ 
+            this.setState({openmenucat:false})
+        }else{
+            this.setState({openmenucat:true})
+        }
+    }
     render() {
         return (
             <>
@@ -72,24 +79,26 @@ class Header extends React.Component {
                         </div>
 
                         <ul className="menu d-flex align-items-center justify-content-end " id={this.state.openmenumobile ? '':'oppen'} >
+                            <li className="limenu">Menu <span onClick={this.handleClick} ><FontAwesomeIcon icon={faTimes} /></span></li>
                             <li>  
-                                <Link to="/" className=''   alt="Home">
+                                <Link onClick={this.handleClick} to="/" className=''   alt="Home">
                                     Home    
                                 </Link>
                             </li>
                             <li>  
-                                <NavLink to="/about" activeClassName='active'   alt="About">
+                                <NavLink onClick={this.handleClick} to="/about" activeClassName='active'   alt="About">
                                     About
                                 </NavLink>
                             </li>
-                            <li>  
-                                <NavLink to="/service" activeClassName='active'   alt="Services">
+                            <li className="lihaschild">  
+                                <NavLink onClick={this.handleClick} to="/service" activeClassName='active'   alt="Services">
                                     Services  <FontAwesomeIcon icon={faChevronDown} />
                                 </NavLink>
-                                <ul className="ulcat">
+                                <span onClick={this.handleShowmenucat} ><FontAwesomeIcon icon={faChevronDown} /></span>
+                                <ul className="ulcat" id={this.state.openmenucat ? '':'oppen'}>
                                     {this.state.listServices.map(service => {
                                         return  <li key={service.id}>
-                                                    <Link to={`/service/${service.id}`} atl="Services1">
+                                                    <Link onClick={this.handleClick} to={`/service/${service.id}`} atl="Services1">
                                                         {service.name}
                                                     </Link>
                                                 </li>
@@ -97,22 +106,22 @@ class Header extends React.Component {
                                 </ul>
                             </li>
                             <li>  
-                                <NavLink to="/project" activeClassName='active' alt="Project">
+                                <NavLink onClick={this.handleClick} to="/project" activeClassName='active' alt="Project">
                                     Project
                                 </NavLink>
                             </li>
                             <li>  
-                                <NavLink to="/news" activeClassName='active' alt="News">
+                                <NavLink onClick={this.handleClick} to="/news" activeClassName='active' alt="News">
                                     News
                                 </NavLink>
                             </li>
                             <li>  
-                                <NavLink to="/recruitment" activeClassName='active' alt="Recruitment">
+                                <NavLink onClick={this.handleClick} to="/recruitment" activeClassName='active' alt="Recruitment">
                                     Recruitment
                                 </NavLink>
                             </li>
                             <li>  
-                                <a href="#footer" activeClassName='active' alt="Contact">
+                                <a onClick={this.handleClick} href="#contact" alt="Contact">
                                     Contact
                                 </a>
                             </li>

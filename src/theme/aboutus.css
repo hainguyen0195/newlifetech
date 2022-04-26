@@ -57,6 +57,7 @@
 }
 .about-right{ 
     width: 45%;
+    overflow: hidden;
 }
 .about-title{
     font-size: 33px;

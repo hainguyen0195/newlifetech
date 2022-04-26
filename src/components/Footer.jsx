@@ -16,10 +16,9 @@ const listSocial = [
 ];
 
 const listQuiklink = [
-    { id: 1, link: 'service-mobile-app', name: 'About Us', },
-    { id: 2, link: 'service-pc-app', name: 'Contact Us', },
-    { id: 3, link: 'service-pc-app', name: 'Service', },
-    { id: 4, link: 'service-iot-app', name: 'Terms & Conditions', },
+    { id: 1, link: 'about', name: 'About Us', },
+    { id: 2, link: 'service', name: 'Service', },
+    { id: 3, link: 'project', name: 'Project', },
 ];
 
 class Footer extends React.Component {
@@ -89,7 +88,7 @@ class Footer extends React.Component {
     render() {
         return (
             <>
-                <div className='footer' id="footer">
+                <div className='footer' >
                     <div className='wrap-content'>
                         <div className="row">
                             <div className='col-lg-4 col-md-6 col-sm-6'>
@@ -132,7 +131,7 @@ class Footer extends React.Component {
                                     })}
                                 </ul>
                             </div>             
-                            <div className="col-lg-4 col-md-6 col-sm-6">
+                            <div className="col-lg-4 col-md-6 col-sm-6" id="contact">
                                 <div className="footer-title">Contact Information</div>
                                 <form onSubmit={this.handleSubmit}>
                                     <input type="text" name="name" className="input-newsletter" value={this.state.valueName} onChange={this.handleChangeName} placeholder="Your Name" />

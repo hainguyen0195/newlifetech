@@ -33,7 +33,7 @@ class About extends React.Component {
             <>
                 <ContentWapper title='About' />
                 <div className="padding">
-                    <div className="wrap-content  d-flex align-items-start justify-content-between">
+                    <div className="wrap-content d-flex flex-wrap align-items-start justify-content-between">
                         <div className="about-left">
                             <div className="about-title">
                                 {this.state.detailAbout.name}
