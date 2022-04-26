@@ -89,7 +89,7 @@ class Footer extends React.Component {
     render() {
         return (
             <>
-                <div className='footer'>
+                <div className='footer' id="footer">
                     <div className='wrap-content'>
                         <div className="row">
                             <div className='col-lg-4 col-md-6 col-sm-6'>

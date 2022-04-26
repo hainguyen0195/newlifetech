@@ -58,7 +58,7 @@ class Header extends React.Component {
             this.setState({openmenumobile:true})
         }
     }
-    
+  
     render() {
         return (
             <>
@@ -112,9 +112,9 @@ class Header extends React.Component {
                                 </NavLink>
                             </li>
                             <li>  
-                                <NavLink to="/contact" activeClassName='active' alt="Contact">
+                                <a href="#footer" activeClassName='active' alt="Contact">
                                     Contact
-                                </NavLink>
+                                </a>
                             </li>
                         </ul>
                     </div>

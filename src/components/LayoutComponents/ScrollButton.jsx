@@ -39,9 +39,9 @@ class ScrollButton extends React.Component {
             <>
                 <div className="btn-totop" onClick={this.scrollToTop}
                     style={{display: this.state.visible ? 'inline' : 'none'}}
-            >
-                <FontAwesomeIcon icon={faArrowUp} />
-            </div>
+                >
+                    <FontAwesomeIcon icon={faArrowUp} />
+                </div>
             </>
         )
     }
