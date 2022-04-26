@@ -32,7 +32,7 @@ class Slide extends React.Component {
                             </div>
                         </div>
                         <div className="banner-slider">
-                            <Link to="/" title='Logo'><img src={this.state.bannerSlider} /></Link>
+                            <img src={this.state.bannerSlider} />
                         </div>
                     </div>
                 </div>

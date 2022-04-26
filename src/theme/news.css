@@ -5,6 +5,17 @@
 .news-content{
     padding: 15px 15px; 
 }
+.news-icon{
+    position: relative;
+    overflow: hidden;
+}
+.news-icon img{
+    transition: all 0.3s ease 0s;
+    transform: scale3d(1, 1, 1);
+}
+.news-icon:hover img{
+    transform: scale3d(1.1, 1.1, 1.1);
+}
 .news-title{
     color: #505060;
     font-size: 18px;

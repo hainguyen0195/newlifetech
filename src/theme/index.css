@@ -179,11 +179,19 @@ a.btn-a:hover:before{
   }
   .project-item{
     margin:10px 0;
+    align-items: flex-start !important;
+  }
+  .project-title{
+    padding: 0px 0 5px;
+    font-size: 17px;
+  }
+  .seemore {
+    margin: 5px 0 0;
   }
   .project-des{
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 25px;
+    line-height: 20px;
     -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -437,6 +445,24 @@ a.btn-a:hover:before{
   }
 }
 
-@media (max-width: 575.98px) {
-
+@media (max-width: 400px) {
+  .project-item{
+    margin:10px 0;
+    align-items: flex-start !important;
+  }
+  .project-title{
+    padding: 0px 0 5px;
+    font-size: 17px;
+  }
+  .seemore {
+    margin: 5px 0 0;
+  }
+  .project-des{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
 }
