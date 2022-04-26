@@ -14,7 +14,7 @@ class ServicePageDetail extends React.Component {
       this.state = {
          detailService:[],
          listService:[],
-         id:'',
+         idname:'',
         };
     }
     componentWillMount(){ // truoc khi component render
@@ -40,6 +40,7 @@ class ServicePageDetail extends React.Component {
         if (snap.exists()) {
             this.setState({
                 detailService: snap.data(),
+                idname:snap.data().name,
             })
         }
         else {
@@ -84,7 +85,7 @@ class ServicePageDetail extends React.Component {
                         <div className="title-index">Other Services</div>
                         <div className="row">
                             {this.state.listService.map(service => {
-                                return <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' key={service.id} service={service}/>
+                                return service.name!=this.state.idname ? <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' key={service.id} service={service}/> :''
                             })}
                         </div>
                     </div>

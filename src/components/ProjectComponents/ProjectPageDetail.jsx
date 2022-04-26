@@ -122,7 +122,7 @@ class ProjectPageDetail extends React.Component {
                         <div className="title-index">Other Project</div>
                         <div className="row">
                             {this.state.listProject.map(project => {
-                                return <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} />
+                                return project.name!=this.state.idname ? <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} /> :''
                             })}
                         </div>
                     </div>
