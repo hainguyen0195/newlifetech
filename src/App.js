@@ -24,6 +24,8 @@ import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-d
   import ProjectPageDetail from './components/ProjectComponents/ProjectPageDetail';
   import NewsPage from './components/NewsComponents/NewsPage';
   import NewsPageDetail from './components/NewsComponents/NewsPageDetail';
+  import RecruitmentPage from './components/RecruitmentComponents/RecruitmentPage';
+  import RecruitmentDetail from './components/RecruitmentComponents/RecruitmentDetail';
 
   function App() {
       return (
@@ -49,6 +51,8 @@ import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-d
               <Route path="/project/:id" ><ProjectPageDetail /></Route>
               <Route path="/news" component={NewsPage} exact></Route>
               <Route path="/news/:id" ><NewsPageDetail /></Route>
+              <Route path="/recruitment" component={RecruitmentPage} exact></Route>
+              <Route path="/recruitment/:id" ><RecruitmentDetail /></Route>
             </Switch>
           <Footer />
           <ScrollButton />
