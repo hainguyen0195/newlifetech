@@ -17,24 +17,24 @@ class Aboutus extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listAboutus:listAboutus
+         listAboutus:[]
       };
     }
     componentDidMount(){
-        //this.getData();
+        this.getData();
     }
-    // getData = async () => {
-    //     const q = query(collection(db, "aboutus"));
-    //     let querySnapshot = await getDocs(q);
-    //     const listabout=[];
+    getData = async () => {
+        const q = query(collection(db, "aboutus"));
+        let querySnapshot = await getDocs(q);
+        const listabout=[];
 
-    //     querySnapshot.forEach((doc) => {
-    //         let about = doc.data();
-    //         listabout.push(about);
-    //         about['id']=(doc.id);
-    //         this.setState({listAboutus: listabout,id:doc.id})
-    //     });
-    // }
+        querySnapshot.forEach((doc) => {
+            let about = doc.data();
+            listabout.push(about);
+            about['id']=(doc.id);
+            this.setState({listAboutus: listabout,id:doc.id})
+        });
+    }
     render() {
         return (
             <>
@@ -45,7 +45,7 @@ class Aboutus extends React.Component {
                                 return  <div className="col-md-3 col-sm-4 col-xs-6" key={aboutus.id}>
                                             <div className="aboutus-item">
                                                 <div className="aboutus-icon d-flex align-items-center justify-content-center">
-                                                    {aboutus.icon}
+                                                    <img src={aboutus.photo} />
                                                 </div>
                                                 <h3 className="aboutus-title">
                                                     {aboutus.name}

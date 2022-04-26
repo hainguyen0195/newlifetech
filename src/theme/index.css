@@ -20,7 +20,7 @@ a:hover{
 }
 img{
   max-width: 100%;
-  height: inherit;
+  height: initial;
 }
 .title-index{
   text-align: center;

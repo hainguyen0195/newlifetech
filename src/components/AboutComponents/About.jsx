@@ -2,15 +2,31 @@ import React from 'react';
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import Aboutus from '../../components/Aboutus';
 import * as images from '../../assets/images';
-import '../../theme/about.css';
+import '../../theme/aboutus.css';
+import {db,storage} from "../../config";
+import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
 
 class About extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            titleAbout:'Our mission is to make your business better through technology',
-            desAbout:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            detailAbout:[],
         };
+    }
+    componentDidMount(){
+        const iditem='dhWX8E7gHsKwgqplE6XT';
+        this.getDataDetal('static-aboutus', iditem);
+    }
+    getDataDetal = async (coll, id,match) => {
+        const snap = await getDoc(doc(db, coll, id))
+        if (snap.exists()) {
+            this.setState({
+                detailAbout: snap.data(),
+            })
+        }
+        else {
+            console.log("No such document")
+        }
     }
     render() {
         return (
@@ -20,23 +36,40 @@ class About extends React.Component {
                     <div className="wrap-content  d-flex align-items-start justify-content-between">
                         <div className="about-left">
                             <div className="about-title">
-                                {this.state.titleAbout}
+                                {this.state.detailAbout.name}
                             </div>
-                            <div className="about-des">
-                                {this.state.desAbout}
-                            </div>
-                            <div className="about-des">
-                                {this.state.desAbout}
-                            </div>
-                            <div className="about-des">
-                                {this.state.desAbout}
-                            </div>
+                            {
+                                this.state.detailAbout.des1 ? 
+                                <div className="about-des">
+                                    {this.state.detailAbout.des1}
+                                </div>
+                                : ''
+                            }
+                            {
+                                this.state.detailAbout.des2 ? 
+                                <div className="about-des">
+                                    {this.state.detailAbout.des2}
+                                </div>
+                                : ''
+                            }
+                            {
+                                this.state.detailAbout.des3 ? 
+                                <div className="about-des">
+                                    {this.state.detailAbout.des3}
+                                </div>
+                                : ''
+                            }
+                           
                         </div>
-                        <div className="about-right">
-                            <div className="about-image">
-                                <img src={images.Aboutimage} atl='icon' />
+                        {
+                            this.state.detailAbout.photo ?
+                            <div className="about-right">
+                                <div className="about-image">
+                                    <img src={this.state.detailAbout.photo} atl='photo' />
+                                </div>
                             </div>
-                        </div>
+                            :''
+                        }
                     </div>
                 </div>
                 <Aboutus />

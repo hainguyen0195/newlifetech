@@ -70,8 +70,21 @@ class Footer extends React.Component {
         this.setState({valueMess: event.target.value});
     }
     handleSubmit(event) {
-        alert('Your name: ' + this.state.valueName + ' -- Your email' + this.state.valueEmail + ' -- Your message: ' + this.state.valueMess );
+        //alert('Your name: ' + this.state.valueName + ' -- Your email' + this.state.valueEmail + ' -- Your message: ' + this.state.valueMess );
+        db.collection('emailcontact').add({
+            name:this.state.valueName,
+            email:this.state.valueEmail,
+            mess:this.state.valueMess,
+        })
+        .then(()=>{
+        alert('insert ok');
+        })
         event.preventDefault();
+        this.setState({
+            valueName: '',
+            valueEmail: '',
+            valueMess: '',
+        });
     }
     render() {
         return (
