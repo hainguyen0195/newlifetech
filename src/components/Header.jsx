@@ -58,6 +58,11 @@ class Header extends React.Component {
         }else{
             this.setState({openmenumobile:true})
         }
+        if(this.state.openmenucat==true){ 
+            this.setState({openmenucat:false})
+        }else{
+            this.setState({openmenucat:true})
+        }
     }
     handleShowmenucat () {
         if(this.state.openmenucat==true){ 

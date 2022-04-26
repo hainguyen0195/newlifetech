@@ -134,9 +134,10 @@ a.btn-a:hover:before{
 .btn-menu{
   display:none;
 }
-.limenu{
+.limenu,ul.menu li.lihaschild span{
   display:none;
 }
+
 @media (min-width: 1200px) {
   
 }
@@ -211,15 +212,16 @@ a.btn-a:hover:before{
   }
   ul.menu {
     position: fixed;
-    width: 300px;
+    width: 70vh;
+    max-width: 300px;
     top: 0;
     left: 0;
     height: 100vh;
     display: block !important;
     padding: 0;
     background: #fff;
-    transform: translateX(-300px);
-    transition: all 0.3s ease 0s;
+    transform: translateX(-800px);
+    transition: all 0.5s ease 0s;
     box-shadow: 0 0 10px #333;
   }
   ul.menu#oppen{
@@ -262,8 +264,10 @@ a.btn-a:hover:before{
   ul.menu li.lihaschild a > svg {
     display:none;
   }
-  .ul.menu li.lihaschild span{
+  ul.menu li.lihaschild span{
     width:24px;
+    display:block;
+    text-align: center;
   }
   ul.menu li.limenu span svg{
 
@@ -274,13 +278,17 @@ a.btn-a:hover:before{
     box-shadow: 0px 3px 5px 0px #ccc;
   }
   .ulcat#oppen{
-
+    height: initial;
+    overflow: initial;
+    position: relative;
   }
-  ul.menu>li.lihaschild:hover .ulcat {
+  ul.menu>li.lihaschild .ulcat {
     opacity: 1;
     visibility: visible;
     top: 100%;
     transition: 0.4s;
+    height: 0;
+    overflow: hidden;
   }
   ul.ulcat li{
     padding: 0 15px;
@@ -419,6 +427,13 @@ a.btn-a:hover:before{
   }
   .counter-number{
     font-size:35px;
+  }
+  .about-title{
+    font-size:20px;
+  }
+  .content-detail-news {
+    font-size: 14px;
+    line-height: 23px;
   }
 }
 

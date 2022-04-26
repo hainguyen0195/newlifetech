@@ -26,9 +26,9 @@ class Slide extends React.Component {
                                 <Link to="/about" className='btn-learnmore'   alt="Learn more">
                                     Learn more
                                 </Link>
-                                <Link to="/contact" className='btn-contactus'   alt="Contact us">
+                                <a href="#contact" className='btn-contactus'   alt="Contact us">
                                     Contact us
-                                </Link>
+                                </a>
                             </div>
                         </div>
                         <div className="banner-slider">
