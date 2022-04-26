@@ -14,7 +14,7 @@ class NewsItem extends React.Component {
                 <div className={this.props.class} key={this.props.news.id}>
                     <div className="news-item">
                         <div className="news-icon">
-                                <Link to="/" title='photo'><img src={this.props.news.photo} /></Link>
+                                <Link to={`/news/${this.props.news.id}`} title='photo'><img src={this.props.news.photo} /></Link>
                         </div>
                         <div className="news-content">
                             <div className="news-author-date"><FontAwesomeIcon icon={faUser} /> {this.props.news.author} <span></span> <FontAwesomeIcon icon={faCalendarAlt} /> {this.props.news.date}</div>
@@ -25,7 +25,7 @@ class NewsItem extends React.Component {
                                 {this.props.news.des}
                             </div>
                             <div className="news-seemore">
-                                <Link className="btn-a" to="/" title='photo'>Continue reading</Link>
+                                <Link className="btn-a" to={`/news/${this.props.news.id}`} title='photo'>Continue reading</Link>
                             </div>
                         </div>
                     </div>

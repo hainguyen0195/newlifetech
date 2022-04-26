@@ -7,12 +7,6 @@ import '../theme/aboutus.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
-const listAboutus = [
-    { id: 1, icon: <FontAwesomeIcon icon={faUser} />, name: 'Who We Are?', des:'We are young people with strong aspirations, desire to bring the best to society.'},
-    { id: 2, icon: <FontAwesomeIcon icon={faSearch} />, name: 'What We Do?', des:'We are a leading software development and IT services provider.'},
-    { id: 3, icon: <FontAwesomeIcon icon={faMapSigns} />, name: 'Why We Do It?', des:'We believe technology will bring better life to everyone.'},
-    { id: 4, icon: <FontAwesomeIcon icon={faHistory} />, name: 'Since When?', des:'From early 2015.'},
-];
 class Aboutus extends React.Component {
     constructor(props) {
       super(props);

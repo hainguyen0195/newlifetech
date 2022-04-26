@@ -11,6 +11,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
+import NewsItem from '../components/NewsComponents/NewsItem';
+
 
 
 class News extends React.Component {
@@ -77,25 +79,7 @@ class News extends React.Component {
                     <div className='wrap-content'>
                         <OwlCarousel className='owl-theme' {...this.state.options}>
                             {this.state.listNews.map(news => {
-                                return  <div className="news-col" key={news.id}>
-                                            <div className="news-item">
-                                                <div className="news-icon">
-                                                     <Link to="/" title='photo'><img src={news.photo} /></Link>
-                                                </div>
-                                                <div className="news-content">
-                                                    <div className="news-author-date"><FontAwesomeIcon icon={faUser} /> {news.author} <span></span> <FontAwesomeIcon icon={faCalendarAlt} /> {news.date}</div>
-                                                    <h3 className="news-title">
-                                                        {news.name}
-                                                    </h3>
-                                                    <div className="news-des">
-                                                        {news.des}
-                                                    </div>
-                                                    <div className="news-seemore">
-                                                        <Link className="btn-a" to="/" title='photo'>Continue reading</Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                return  <NewsItem class='news-col' news={news} key={news.id} />
                             })}
                         </OwlCarousel>
                     </div>
