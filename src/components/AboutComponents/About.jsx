@@ -5,6 +5,9 @@ import * as images from '../../assets/images';
 import '../../theme/aboutus.css';
 import {db,storage} from "../../config";
 import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
+import i18n from '../../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
 
 class About extends React.Component {
     constructor(props) {
@@ -31,31 +34,17 @@ class About extends React.Component {
     render() {
         return (
             <>
-                <ContentWapper title='About' />
+                <ContentWapper  title={this.props.i18n.t('about')} />
                 <div className="padding">
                     <div className="wrap-content d-flex flex-wrap align-items-start justify-content-between">
                         <div className="about-left">
                             <div className="about-title">
-                                {this.state.detailAbout.name}
+                                {(this.state.detailAbout.namelang!=undefined)? this.state.detailAbout.namelang[this.props.i18n.language] :''}
                             </div>
                             {
-                                this.state.detailAbout.des1 ? 
+                                this.state.detailAbout.deslang ? 
                                 <div className="about-des">
-                                    {this.state.detailAbout.des1}
-                                </div>
-                                : ''
-                            }
-                            {
-                                this.state.detailAbout.des2 ? 
-                                <div className="about-des">
-                                    {this.state.detailAbout.des2}
-                                </div>
-                                : ''
-                            }
-                            {
-                                this.state.detailAbout.des3 ? 
-                                <div className="about-des">
-                                    {this.state.detailAbout.des3}
+                                    {this.state.detailAbout.deslang[this.props.i18n.language]}
                                 </div>
                                 : ''
                             }
@@ -78,4 +67,4 @@ class About extends React.Component {
     }
 }
 
-export default About;
+export default withTranslation()(About);

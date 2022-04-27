@@ -13,6 +13,10 @@ import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 
+import i18n from '../../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
+
 class NewsPageDetail extends React.Component {
     constructor(props) {
       super(props);
@@ -38,7 +42,7 @@ class NewsPageDetail extends React.Component {
         if (snap.exists()) {
             this.setState({
                 detailNews: snap.data(),
-                idname:snap.data().name,
+                idname:snap.data().namelang.vi,
             })
         }
         else {
@@ -60,21 +64,21 @@ class NewsPageDetail extends React.Component {
     render() {
         return (
             <>
-                <ContentWapper title='News' />
+                <ContentWapper title={this.props.i18n.t('news')} />
                 <div className='news-detail-page padding'>
                     <div className='wrap-content'>
                         <div className="title-detail-news">
-                            {this.state.detailNews.name}
+                            {(this.state.detailNews.namelang!=undefined)? this.state.detailNews.namelang[this.props.i18n.language] :''}
                         </div>
                         <div className="news-author-date"><FontAwesomeIcon icon={faUser} /> {this.state.detailNews.author} <span></span> <FontAwesomeIcon icon={faCalendarAlt} /> {this.state.detailNews.date}</div>
                         <div className="content-detail-news">
-                            {this.state.detailNews.content ? this.state.detailNews.content : ''}
+                            {(this.state.detailNews.contentlang!=undefined)? this.state.detailNews.contentlang[this.props.i18n.language] :''}
                         </div>
                         
                         <div className="title-index">Other News</div>
                         <div className="row">
                             {this.state.listNews.map(news => {
-                                return news.name!=this.state.idname ? <NewsItem class='col-md-4 col-sm-6 col-xs-12 col-news' news={news} key={news.id} /> :''
+                                return news.namelang.vi!=this.state.idname ? <NewsItem class='col-md-4 col-sm-6 col-xs-12 col-news' news={news} key={news.id} /> :''
                             })}
                         </div>
                     </div>
@@ -84,4 +88,4 @@ class NewsPageDetail extends React.Component {
     }
 }
 
-export default withRouter(NewsPageDetail);
+export default withRouter(withTranslation()(NewsPageDetail));

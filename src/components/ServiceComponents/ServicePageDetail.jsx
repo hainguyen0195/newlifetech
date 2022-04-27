@@ -7,6 +7,9 @@ import ServiceItrem from '../../components/ServiceComponents/ServiceItem';
 
 import {db,storage} from "../../config";
 import { collection, query, getDocs,getDoc,doc } from "firebase/firestore";
+import i18n from '../../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
 
 class ServicePageDetail extends React.Component {
     constructor(props) {
@@ -15,6 +18,7 @@ class ServicePageDetail extends React.Component {
          detailService:[],
          listService:[],
          id:'',
+         idname:'',
         };
     }
     componentWillMount(){ // truoc khi component render
@@ -40,6 +44,7 @@ class ServicePageDetail extends React.Component {
         if (snap.exists()) {
             this.setState({
                 detailService: snap.data(),
+                idname:snap.data().namelang.vi,
             })
         }
         else {
@@ -59,10 +64,9 @@ class ServicePageDetail extends React.Component {
     }
 
     render() {
-        
         return (
             <>
-                <ContentWapper title='Service' />
+                <ContentWapper  title={this.props.i18n.t('service')} />
                 <div className='service'>
                     <div className='wrap-content'>
                         {
@@ -74,17 +78,16 @@ class ServicePageDetail extends React.Component {
                             </>
                             : ''
                         }
-                      
                         <div className="nameServiceDetail">
-                            {this.state.detailService.name}
+                           {(this.state.detailService.namelang!=undefined)? this.state.detailService.namelang[this.props.i18n.language] :''}
                         </div>
                         <div className="contentServiceDetail">
-                            {this.state.detailService.content}
+                            {(this.state.detailService.contentlang!=undefined)? this.state.detailService.contentlang[this.props.i18n.language] :''}
                         </div>
-                        <div className="title-index">Other Services</div>
+                        <div className="title-index"><Trans i18nKey='title.otherservice' /></div>
                         <div className="row">
                             {this.state.listService.map(service => {
-                                return <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' key={service.id} service={service}/>
+                                return service.namelang.vi!=this.state.idname ? <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' key={service.id} service={service}/> :''
                             })}
                         </div>
                     </div>
@@ -94,4 +97,4 @@ class ServicePageDetail extends React.Component {
     }
 }
 
-export default withRouter(ServicePageDetail);
+export default withRouter(withTranslation()(ServicePageDetail));

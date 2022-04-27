@@ -7,6 +7,8 @@ import * as images from '../assets/images';
 import '../theme/footer.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
 
 const listSocial = [
     { id: 1, icon: <FontAwesomeIcon icon={faFacebookF} />, name: 'Facebook',  link:'#facebook'},
@@ -25,7 +27,6 @@ class Footer extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-            desFooter:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco consectetur laboris.',
             listSocial:listSocial,
             listServices:[],
             id:'',
@@ -92,13 +93,12 @@ class Footer extends React.Component {
                     <div className='wrap-content'>
                         <div className="row">
                             <div className='col-lg-4 col-md-6 col-sm-6'>
-                                <div className="footer-title">About us</div>
+                                <div className="footer-title"><Trans i18nKey='about' /></div>
                                 <div className="info-company">
                                     <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {this.state.adress}</p>
                                     <p><FontAwesomeIcon icon={faEnvelope} /> {this.state.email}</p>
                                     <p><FontAwesomeIcon icon={faPhoneAlt} /> {this.state.hotline}</p>
                                 </div>
-                                <div className="desFooter">{this.state.desFooter}</div>
                                 <div className="socical-box d-flex align-items-center justify-content-start">
                                     {this.state.listSocial.map(socical => { 
                                         return  <div className="socical" key={socical.id}>
@@ -108,37 +108,50 @@ class Footer extends React.Component {
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-6 col-sm-6">
-                                <div className="footer-title">Our Services</div>
+                                <div className="footer-title"><Trans i18nKey='title.service' /></div>
                                 <ul className="footer-quick-links">
                                     {this.state.listServices.map(item => {
                                         return  <li key={item.id}>
-                                                    <Link to={item.link} atl={item.name}>
-                                                        {item.name}
+                                                    <Link to={item.link} title={item.namelang[this.props.i18n.language]}>
+                                                        {item.namelang[this.props.i18n.language]}
                                                     </Link>
                                                 </li>
                                     })}
                                 </ul>
                             </div>
                             <div className="col-lg-2 col-md-6 col-sm-6">
-                                <div className="footer-title">Quick Links</div>
+                                <div className="footer-title"><Trans i18nKey='title.quicklink' /></div>
                                 <ul className="footer-quick-links">
-                                    {this.state.listQuiklink.map(item => {
-                                        return  <li key={item.id}>
-                                                    <Link to={item.link} atl={item.name}>
-                                                        {item.name}
-                                                    </Link>
-                                                </li>
-                                    })}
+                                    <li >
+                                        <Link to='/about' title={this.props.i18n.t('about')}>
+                                            {this.props.i18n.t('about')}
+                                        </Link>
+                                    </li>
+                                    <li >
+                                        <Link to='/service' title={this.props.i18n.t('service')}>
+                                            {this.props.i18n.t('service')}
+                                        </Link>
+                                    </li>
+                                    <li >
+                                        <Link to='/project' title={this.props.i18n.t('project')}>
+                                            {this.props.i18n.t('project')}
+                                        </Link>
+                                    </li>
+                                    <li >
+                                        <Link to='/news' title={this.props.i18n.t('news')}>
+                                            {this.props.i18n.t('news')}
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>             
                             <div className="col-lg-4 col-md-6 col-sm-6" id="contact">
-                                <div className="footer-title">Contact Information</div>
+                                <div className="footer-title"><Trans i18nKey='title.contactinfomation' /></div>
                                 <form onSubmit={this.handleSubmit}>
-                                    <input type="text" name="name" className="input-newsletter" value={this.state.valueName} onChange={this.handleChangeName} placeholder="Your Name" />
-                                    <input type="email" name="email" className="input-newsletter" value={this.state.valueEmail} onChange={this.handleChangeEmail} placeholder="Your Email" />
+                                    <input type="text" name="name" className="input-newsletter" value={this.state.valueName} onChange={this.handleChangeName} placeholder={this.props.i18n.t('title_form.yourname')} />
+                                    <input type="email" name="email" className="input-newsletter" value={this.state.valueEmail} onChange={this.handleChangeEmail} placeholder={this.props.i18n.t('title_form.youremail')} />
                                     <div className="newsletter-pre">
-                                        <textarea type="text" className="input-newsletter textarea-newsletter" value={this.state.valueMess} onChange={this.handleChangeMess} placeholder="Your Message" />
-                                        <input type="submit" className="button-newsletter" value="Submit" />
+                                        <textarea type="text" className="input-newsletter textarea-newsletter" value={this.state.valueMess} onChange={this.handleChangeMess} placeholder={this.props.i18n.t('title_form.yourmess')} />
+                                        <input type="submit" className="button-newsletter" value={this.props.i18n.t('title_form.submit')} />
                                     </div>
                                 </form>   
                             </div>             
@@ -163,4 +176,4 @@ class Footer extends React.Component {
     }
 }
 
-export default Footer;
+export default withTranslation()(Footer);

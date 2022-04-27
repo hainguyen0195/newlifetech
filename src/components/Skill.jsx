@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import * as images from '../assets/images';
 import '../theme/skill.css';
+import { Trans } from 'react-i18next';
 
 const listSkill = [
     { id: 1, name: '.NET (C# - VB)', level:'80%'},
@@ -30,8 +31,8 @@ class Skill extends React.Component {
                     <div className='wrap-content'>
                         <div className='row'>
                             <div className="col-md-7 col-sm-6 col-xs-12">
-                                <div className="title-skill">Our Skills</div>
-                                <div className="des-skill">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                <div className="title-skill"><Trans i18nKey='title.skill' /></div>
+                                <div className="des-skill"><Trans i18nKey='desskill' /></div>
                                 <div className="row">
                                     {this.state.listSkill.map(skill => {
                                         return  <div className="col-md-6 col-sm-6 col-xs-12" key={skill.id}>

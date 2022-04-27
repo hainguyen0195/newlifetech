@@ -81,6 +81,9 @@ a.view-project:before {
 a.view-project:hover:before {
     transform: scale(1,1);
 }
+a.view-project svg{
+    padding: 0 4px 0 0
+}
 .project-info{
     width:55%;
     padding:0 0 0 15px;
@@ -97,6 +100,12 @@ a.view-project:hover:before {
     color: #959094;
     font-size: 14px;
     min-height: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .project-seemore{
@@ -109,6 +118,9 @@ a.view-project:hover:before {
 }
 .project-seemore a:hover{
     padding: 0 0 0 10px;
+}
+.project-seemore a svg{
+    padding: 0 5px 0 0
 }
 
 .title-detail-project{
@@ -147,6 +159,9 @@ a.view-project:hover:before {
     margin-right: 7px;
     font-style: normal;
     color: #333;
+}
+.portfolio-info svg{
+    color: #ffb700;
 }
 .row-project-detail{
     display:flex;

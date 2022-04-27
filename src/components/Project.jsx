@@ -9,6 +9,7 @@ import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 
 import ProjectItem from '../components/ProjectComponents/ProjectItem';
+import { Trans } from 'react-i18next';
 
 class Project extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class Project extends React.Component {
         return (
             <>
                 <div className='project'>
-                    <div className="title-index">Our Projects</div>
+                    <div className="title-index"><Trans i18nKey='title.project' /></div>
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
                         <div className="row">
                             {this.state.listProject.map(project => {

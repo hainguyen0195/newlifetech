@@ -1,0 +1,47 @@
+{
+    "home":"Trang chủ",
+    "about":"Giới thiệu",
+    "service":"Dịch vụ",
+    "project":"Dự án",
+    "news":"Tin tức",
+    "recruitment":"Tuyển dụng",
+    "contact":"Liên hệ",
+    "seemore":"Xem thêm",
+    "viewproject":"Xem dự án",
+    "detail":"Chi tiết",
+    "continuereading":"Tiếp tục",
+    "projectdetail":"Chi tiết dự án",
+    "desskill":"Với những kỹ năng tuyệt vời dưới đậy chúng tội tự tin có thể xây dựng dự án của khách hàng một cách tốt nhất với sự tối ưu hoá cho tốc độ và chất lượng .",
+    "content_slider": {
+        "welcome_to": "Chào mừng bạn đến với",
+        "titleSlider": "Life Tech Việt Nam",
+        "desSlider": "Chúng tôi cung cấp các dịch vụ phát triển phần mềm tốt nhất từ ​​Việt Nam.",
+        "learnmore": "Tìm hiểu thêm",
+        "contactus": "Liên hệ chúng tôi"
+    },
+    "title": {
+        "activities": "Hoạt động",
+        "service": "Dịch vụ",
+        "news": "Tin tức",
+        "project": "Dự án đã thực hiện",
+        "skill": "Kỹ năng ",
+        "recruitment": "Tuyển dụng ",
+        "temmember": "Thành viên của chúng tôi",
+        "quicklink": "Lối tắt",
+        "contactinfomation": "Thông tin liên hệ",
+        "contactus": "Liên hệ chúng tôi",
+        "otherservice": "Dịch vụ khác",
+        "otherrecruitment": "Bài tuyển dụng khác",
+        "name": "Tên dự án",
+        "customers": "Đối tác",
+        "technology": "Công nghệ",
+        "constructiontime": "Thời gian thực hiện",
+        "evaluate": "Đánh giá"
+    },
+    "title_form": {
+        "yourname": "Tên của bạn",
+        "youremail": "Email của bạn",
+        "yourmess": "Tin nhắn của bạn",
+        "submit": "Gửi"
+    }
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+import i18n from '../../i18n';
+import { Trans,withTranslation } from 'react-i18next';
 class RecruitmentItem extends React.Component {
     constructor(props) {
         super(props);
@@ -19,13 +21,13 @@ class RecruitmentItem extends React.Component {
                         <div className="news-content">
                             <div className="news-author-date"><FontAwesomeIcon icon={faUser} /> {this.props.news.author} <span></span> <FontAwesomeIcon icon={faCalendarAlt} /> {this.props.news.date}</div>
                             <h3 className="news-title">
-                                {this.props.news.name}
+                                {this.props.news.namelang[this.props.i18n.language]}
                             </h3>
                             <div className="news-des">
-                                {this.props.news.des}
+                                {this.props.news.deslang[this.props.i18n.language]}
                             </div>
                             <div className="news-seemore">
-                                <Link className="btn-a" to={`/recruitment/${this.props.news.id}`} title='photo'>Continue reading</Link>
+                                <Link className="btn-a" to={`/recruitment/${this.props.news.id}`} title={this.props.i18n.t('continuereading')} ><Trans i18nKey='continuereading' /></Link>
                             </div>
                         </div>
                     </div>
@@ -35,4 +37,4 @@ class RecruitmentItem extends React.Component {
     }
 }
 
-export default RecruitmentItem;
+export default withTranslation()(RecruitmentItem);

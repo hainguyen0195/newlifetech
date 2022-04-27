@@ -11,6 +11,7 @@ import {db,storage} from "../../config";
 
 import { collection, query, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { Trans,withTranslation } from 'react-i18next';
 
 class NewsPage extends React.Component {
     constructor(props) {
@@ -37,10 +38,9 @@ class NewsPage extends React.Component {
     render() {
         return (
             <>
-                <ContentWapper title='News' />
+                <ContentWapper title={this.props.i18n.t('news')} />
                 <div className='news padding'>
                     <div className='wrap-content'>
-                        <div className="title-index">Our News</div>
                         <div className="row">
                             {this.state.listNews.map(news => {
                                 return <NewsItem class='col-md-4 col-sm-6 col-xs-12 col-news' news={news} key={news.id} />
@@ -53,4 +53,4 @@ class NewsPage extends React.Component {
     }
 }
 
-export default NewsPage;
+export default withTranslation()(NewsPage);

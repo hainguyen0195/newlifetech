@@ -27,7 +27,9 @@ import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-d
   import RecruitmentPage from './components/RecruitmentComponents/RecruitmentPage';
   import RecruitmentDetail from './components/RecruitmentComponents/RecruitmentDetail';
 
+  import { withTranslation } from 'react-i18next';
   function App() {
+    
       return (
         <>
         <ScrollToTop>
@@ -60,4 +62,4 @@ import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-d
       </>
       );
     }
-  export default App;
+  export default withTranslation()(App);

@@ -6,6 +6,14 @@ import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/counter.css';
 
+import {db} from "../config";
+
+import { collection, query, getDocs } from "firebase/firestore";
+
+import i18n from '../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
+
 const listCounter = [
     { id: 1, number: 23 , name: 'Years of Experience', des:'+'},
     { id: 2, number: 500, name: 'Complete Projects', des:''},
@@ -17,8 +25,22 @@ class Counter extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-         listCounter:listCounter
+         listCounter:[]
       };
+    }
+    componentDidMount(){
+        this.getData();
+    }
+    getData = async () => {
+        const q = query(collection(db, "counter"));
+        let querySnapshot = await getDocs(q);
+        const listcouter=[];
+        querySnapshot.forEach((doc) => {
+            let counter = doc.data();
+            listcouter.push(counter);
+            counter['id']=(doc.id);
+            this.setState({listCounter: listcouter,id:doc.id})
+        });
     }
     render() {
         return (
@@ -33,7 +55,7 @@ class Counter extends React.Component {
                                                     <span><CountUp end={counter.number} duration={2.75} /></span> {counter.des}
                                                 </div>
                                                 <h3 className="counter-title">
-                                                    {counter.name}
+                                                    {counter.namelang[this.props.i18n.language]}
                                                 </h3>
                                             </div>
                                         </div>
@@ -46,4 +68,4 @@ class Counter extends React.Component {
     }
 }
 
-export default Counter;
+export default withTranslation()(Counter);

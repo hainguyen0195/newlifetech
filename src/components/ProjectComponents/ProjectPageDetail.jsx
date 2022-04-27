@@ -3,12 +3,17 @@ import { Link,withRouter } from "react-router-dom";
 
 import * as images from '../../assets/images';
 import '../../theme/project.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar} from '@fortawesome/free-solid-svg-icons';
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import ProjectItem from '../../components/ProjectComponents/ProjectItem';
 
 import {db,storage} from "../../config";
 import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
+
+import i18n from '../../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
 
 class ProjectPageDetail extends React.Component {
     constructor(props) {
@@ -40,7 +45,7 @@ class ProjectPageDetail extends React.Component {
             this.setState({
                 detailService: snap.data(),
                 idvideo:idvideo,
-                idname:snap.data().name,
+                idname:snap.data().namelang.vi,
             })
         }
         else {
@@ -48,7 +53,7 @@ class ProjectPageDetail extends React.Component {
         }
     }
     getData = async () => {
-        const q = query(collection(db, "project"), where("name", "!=", this.state.idname));
+        const q = query(collection(db, "project"));
         let querySnapshot = await getDocs(q);
         const listproj=[];
         querySnapshot.forEach((doc) => {
@@ -62,35 +67,35 @@ class ProjectPageDetail extends React.Component {
     render() {
         return (
             <>
-                <ContentWapper title='Project' />
+                <ContentWapper  title={this.props.i18n.t('project')} />
                 <div className='project'>
                     <div className='wrap-content'>
                         <div className="row-project-detail">
                             <div className="prject-detail-left">
                                 <div className="portfolio-info-wrapper">
                                     <div className="portfolio-info portfolio-clients">
-                                        <span className="info-head gdlr-title">Name</span>{this.state.detailService.name}
+                                        <span className="info-head gdlr-title">{this.props.i18n.t('title.name')}</span>{(this.state.detailService.namelang!=undefined)? this.state.detailService.namelang[this.props.i18n.language] :''}
                                     </div>
                                     <div className="portfolio-info portfolio-location">
-                                        <span className="info-head gdlr-title">Customers</span>{this.state.detailService.customers ? this.state.detailService.customers : ''}
+                                        <span className="info-head gdlr-title">{this.props.i18n.t('title.customers')}</span>{this.state.detailService.customers ? this.state.detailService.customers : ''}
                                     </div>
                                     <div className="portfolio-info portfolio-scope-of-work">
-                                        <span className="info-head gdlr-title">Technology </span>{this.state.detailService.technology ? this.state.detailService.technology : ''}
+                                        <span className="info-head gdlr-title">{this.props.i18n.t('title.technology')}</span>{this.state.detailService.technology ? this.state.detailService.technology : ''}
                                     </div>
                                     <div className="portfolio-info portfolio-schedule">
-                                        <span className="info-head gdlr-title">Construction time </span>{this.state.detailService.time ? this.state.detailService.time : ''}
+                                        <span className="info-head gdlr-title">{this.props.i18n.t('title.constructiontime')}</span>{this.state.detailService.time ? this.state.detailService.time : ''}
                                     </div>
                                     <div className="portfolio-info portfolio-schedule">
-                                        <span className="info-head gdlr-title">Evaluate </span>{this.state.detailService.star ? this.state.detailService.star : ''}
+                                        <span className="info-head gdlr-title">{this.props.i18n.t('title.evaluate')}</span>{this.state.detailService.star ? this.state.detailService.star : ''} <FontAwesomeIcon icon={faStar} />
                                     </div>
                                 </div>
                             </div>
                             <div className="prject-detail-right">
                                 <div className="title-detail-project">
-                                    Project Detail
+                                    {this.props.i18n.t('projectdetail')}
                                 </div>
                                 <div className="des-detail-project">
-                                    {this.state.detailService.content ? this.state.detailService.content : ''}
+                                {(this.state.detailService.contentlang!=undefined)? this.state.detailService.contentlang[this.props.i18n.language] :''}
                                 </div>
                                 
                                 <div className="row">
@@ -122,7 +127,7 @@ class ProjectPageDetail extends React.Component {
                         <div className="title-index">Other Project</div>
                         <div className="row">
                             {this.state.listProject.map(project => {
-                                return <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} />
+                                return project.namelang.vi!=this.state.idname ? <ProjectItem class='col-md-6 col-sm-6 col-xs-12 col-project' project={project} key={project.id} /> :''
                             })}
                         </div>
                     </div>
@@ -132,4 +137,4 @@ class ProjectPageDetail extends React.Component {
     }
 }
 
-export default withRouter(ProjectPageDetail);
+export default withRouter(withTranslation()(ProjectPageDetail));

@@ -11,6 +11,7 @@ import {db,storage} from "../../config";
 
 import { collection, query, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { Trans,withTranslation } from 'react-i18next';
 
 class Service extends React.Component {
     constructor(props) {
@@ -37,10 +38,9 @@ class Service extends React.Component {
     render() {
         return (
             <>
-                <ContentWapper title='Service' />
+                <ContentWapper  title={this.props.i18n.t('service')} />
                 <div className='service'>
                     <div className='wrap-content'>
-                        <div className="title-index">Our Services</div>
                         <div className="row">
                             {this.state.listService.map(service => {
                                 return <ServiceItrem class='col-md-4 col-sm-6 col-xs-12' service={service} key={service.id} />
@@ -53,4 +53,4 @@ class Service extends React.Component {
     }
 }
 
-export default Service;
+export default withTranslation()(Service);

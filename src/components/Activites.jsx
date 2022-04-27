@@ -4,7 +4,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import * as images from '../assets/images';
 import '../theme/project.css';
-
+import { Trans } from 'react-i18next';
 const listActivites=[
     { id: 1, icon: images.Avtive1, name: 'Project 1 - Mobile App Development',},
     { id: 2, icon: images.Avtive2, name: 'Project 2 - Mobile App Development',},
@@ -25,7 +25,7 @@ class Activites extends React.Component {
         return (
             <>
                 <div className='activite padding'>
-                    <div className="title-index">Our activites</div>
+                    <div className="title-index"><Trans i18nKey='title.activities' /></div>
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
                         <OwlCarousel className='owl-theme' loop margin={0} items={1} autoplay>
                             {this.state.listActivites.map(activite => {

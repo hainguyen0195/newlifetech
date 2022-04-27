@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import * as images from '../assets/images';
 import '../theme/slide.css';
+import { Trans } from 'react-i18next';
 
 class Slide extends React.Component {
     constructor(props) {
@@ -12,22 +13,24 @@ class Slide extends React.Component {
          bannerSlider:images.Bannerslider
       };
     }
+    
     render() {
         return (
             <>
                 <div className='slide'>
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
                         <div className="main-slider-content">
+                           
                             <div className="title-slider-content">
-                                Welcome to <span> {this.state.titleSlider}</span>
+                                <Trans i18nKey='content_slider.welcome_to' /> <span><Trans i18nKey='content_slider.titleSlider' /></span>
                             </div>
-                            <div className="des-slider-content">{this.state.desSlider}</div>
+                            <div className="des-slider-content"><Trans i18nKey='content_slider.desSlider' /></div>
                             <div className="slider-btn d-flex align-items-center justify-content-start">
                                 <Link to="/about" className='btn-learnmore'   alt="Learn more">
-                                    Learn more
+                                    <Trans i18nKey='content_slider.learnmore' />
                                 </Link>
                                 <a href="#contact" className='btn-contactus'   alt="Contact us">
-                                    Contact us
+                                    <Trans i18nKey='content_slider.contactus' />
                                 </a>
                             </div>
                         </div>

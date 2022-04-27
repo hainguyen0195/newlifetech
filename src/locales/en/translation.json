@@ -1,0 +1,47 @@
+{
+    "home":"Home",
+    "about":"About us",
+    "service":"Service",
+    "project":"Project",
+    "news":"News",
+    "recruitment":"Recruitment",
+    "contact":"Contact",
+    "seemore":"See more",
+    "viewproject":"View Project",
+    "detail":"Detail",
+    "continuereading":"Continue reading",
+    "projectdetail":"Project Detail",
+    "desskill":"With these amazing skills we can confidently build our client's project in the best way with optimization for speed and quality.",
+    "content_slider": {
+        "welcome_to": "Welcome to",
+        "titleSlider": "Life Tech VietNam",
+        "desSlider": "We provide the best software development services from VietNam.",
+        "learnmore": "Learn more",
+        "contactus": "Contact us"
+    },
+    "title": {
+        "activities": "Activities",
+        "service": "Our Services",
+        "news": "Our News",
+        "project": "Our Projects",
+        "skill": "Our Skills",
+        "recruitment": "Our Recruitment",
+        "temmember": "Expert Team Member",
+        "quicklink": "Quick Links",
+        "contactinfomation": "Contact Information",
+        "contactus": "Contact us",
+        "otherservice": "Other Services",
+        "otherrecruitment": "Other Recruitment",
+        "name": "Name",
+        "customers": "Customers",
+        "technology": "Technology",
+        "constructiontime": "Construction time",
+        "evaluate": "Evaluate"
+    },
+    "title_form": {
+        "yourname": "Your Name",
+        "youremail": "Your email",
+        "yourmess": "Your message",
+        "submit": "Submit"
+    }
+}

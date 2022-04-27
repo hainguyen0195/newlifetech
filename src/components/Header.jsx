@@ -7,11 +7,14 @@ import * as images from '../assets/images';
 import '../theme/header.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
-
+import i18n from '../i18n';
+import { Trans,withTranslation } from 'react-i18next';
+import { Translation } from 'react-i18next';
 
 class Header extends React.Component {
     constructor(props) {
       super(props);
+      const lang = navigator.languages ? navigator.languages[0] : navigator.language;
       this.state = {
          logoHeader:images.Logo,
          listServices:[],
@@ -19,10 +22,12 @@ class Header extends React.Component {
          scrolling:'',
          openmenumobile: true,
          openmenucat: true,
+         valuelang: lang.substr(0, 2),
       };
       this.handleScroll = this.handleScroll.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.handleShowmenucat = this.handleShowmenucat.bind(this);
+      this.changeLanguage = this.changeLanguage.bind(this);
     } 
     componentDidMount(){
         this.getData();
@@ -69,13 +74,22 @@ class Header extends React.Component {
             this.setState({openmenucat:true})
         }
     }
+    changeLanguage(e) {
+        this.setState({valuelang:e.target.value});
+        i18n.changeLanguage(e.target.value);
+        if (document.documentElement.lang !== e.target.value) {
+            document.documentElement.lang = e.target.value;
+        }
+    }
     render() {
+        //const { t } = this.props;
+        //console.log(this.props.i18n.language);
         return (
             <>
                 <div className='header' id={this.state.scrolling}>
                     <div className='wrap-content d-flex align-items-center justify-content-between'>
                         <div className='btn-menu' onClick={this.handleClick}>
-                            <FontAwesomeIcon icon={faBars} />
+                            <FontAwesomeIcon icon={faBars} /> 
                         </div>
                         <div className="logo">
                             <Link className="logo-header" to="/" title='Logo'><img src={this.state.logoHeader} /></Link>
@@ -84,51 +98,59 @@ class Header extends React.Component {
                         <ul className="menu d-flex align-items-center justify-content-end " id={this.state.openmenumobile ? '':'oppen'} >
                             <li className="limenu">Menu <span onClick={this.handleClick} ><FontAwesomeIcon icon={faTimes} /></span></li>
                             <li>  
-                                <Link onClick={this.handleClick} to="/" className=''   alt="Home">
-                                    Home    
+                                <Link onClick={this.handleClick} to="/" className=''   title={this.props.i18n.t('home')}>
+                                    {this.props.i18n.t('home')}
                                 </Link>
                             </li>
                             <li>  
-                                <NavLink onClick={this.handleClick} to="/about" activeClassName='active'   alt="About">
-                                    About
+                                <NavLink onClick={this.handleClick} to="/about" activeClassName='active'   title={this.props.i18n.t('about')}>
+                                {this.props.i18n.t('about')}
                                 </NavLink>
                             </li>
                             <li className="lihaschild">  
-                                <NavLink onClick={this.handleClick} to="/service" activeClassName='active'   alt="Services">
-                                    Services  <FontAwesomeIcon icon={faChevronDown} />
+                                <NavLink onClick={this.handleClick} to="/service" activeClassName='active'   title={this.props.i18n.t('service')}>
+                                {this.props.i18n.t('service')}  <FontAwesomeIcon icon={faChevronDown} />
                                 </NavLink>
                                 <span onClick={this.handleShowmenucat} ><FontAwesomeIcon icon={faChevronDown} /></span>
                                 <ul className="ulcat" id={this.state.openmenucat ? '':'oppen'}>
                                     {this.state.listServices.map(service => {
                                         return  <li key={service.id}>
-                                                    <Link onClick={this.handleClick} to={`/service/${service.id}`} atl="Services1">
-                                                        {service.name}
+                                                    <Link onClick={this.handleClick} to={`/service/${service.id}`} title={service.namelang[this.props.i18n.language]}>
+                                                        {service.namelang[this.props.i18n.language]}
                                                     </Link>
                                                 </li>
                                     })}
                                 </ul>
                             </li>
                             <li>  
-                                <NavLink onClick={this.handleClick} to="/project" activeClassName='active' alt="Project">
-                                    Project
+                                <NavLink onClick={this.handleClick} to="/project" activeClassName='active' title={this.props.i18n.t('project')}>
+                                    {this.props.i18n.t('project')}
                                 </NavLink>
                             </li>
                             <li>  
-                                <NavLink onClick={this.handleClick} to="/news" activeClassName='active' alt="News">
-                                    News
+                                <NavLink onClick={this.handleClick} to="/news" activeClassName='active' title={this.props.i18n.t('news')}>
+                                    {this.props.i18n.t('news')}
                                 </NavLink>
                             </li>
                             <li>  
-                                <NavLink onClick={this.handleClick} to="/recruitment" activeClassName='active' alt="Recruitment">
-                                    Recruitment
+                                <NavLink onClick={this.handleClick} to="/recruitment" activeClassName='active' title={this.props.i18n.t('recruitment')}>
+                                    {this.props.i18n.t('recruitment')}
                                 </NavLink>
                             </li>
                             <li>  
-                                <a onClick={this.handleClick} href="#contact" alt="Contact">
-                                    Contact
+                                <a onClick={this.handleClick} href="#contact" title={this.props.i18n.t('contact')}>
+                                    {this.props.i18n.t('contact')}
                                 </a>
                             </li>
                         </ul>
+                        <select className="selectlanguage" value={this.state.valuelang} onChange={this.changeLanguage}>
+                            <option value="vi" >
+                                Vietnamese
+                            </option>
+                            <option value="en">
+                                English
+                            </option>
+                        </select>
                     </div>
                 </div>
             </>
@@ -136,4 +158,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default withTranslation()(Header);

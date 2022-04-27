@@ -14,7 +14,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-
+import { Trans } from 'react-i18next';
 
 class Service extends React.Component {
     constructor(props) {
@@ -78,7 +78,7 @@ class Service extends React.Component {
             <>
                 <div className='service'>
                     <div className='wrap-content'>
-                        <div className="title-index">Our Services</div>
+                        <div className="title-index"><Trans i18nKey='title.service' /></div>
                         <OwlCarousel className='owl-theme' {...this.state.options}>
                             {this.state.listService.map(service => {
                                 return <ServiceItrem class='' service={service} key={service.id}/>

@@ -13,7 +13,7 @@ import { collection, query, getDocs } from "firebase/firestore";
 
 import NewsItem from '../components/NewsComponents/NewsItem';
 
-
+import { Trans } from 'react-i18next';
 
 class News extends React.Component {
     constructor(props) {
@@ -75,7 +75,7 @@ class News extends React.Component {
         return (
             <>
                 <div className='news padding'>
-                    <div className="title-index">New Posts</div>
+                    <div className="title-index"><Trans i18nKey='title.news' /></div>
                     <div className='wrap-content'>
                         <OwlCarousel className='owl-theme' {...this.state.options}>
                             {this.state.listNews.map(news => {

@@ -12,6 +12,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
+import { Trans } from 'react-i18next';
 
 class Teammember extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ class Teammember extends React.Component {
         return (
             <>
                 <div className='teammember'>
-                    <div className="title-index">Expert Team Member</div>
+                    <div className="title-index"><Trans i18nKey='title.temmember' /></div>
                     <div className='wrap-content'>
                         <OwlCarousel className='owl-theme teammember-owl' {...this.state.options}>
                             {this.state.listTeammember.map(teammember => {

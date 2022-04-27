@@ -6,6 +6,8 @@ import * as images from '../assets/images';
 import '../theme/aboutus.css';
 import {db,storage} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
+import i18n from '../i18n';
+import { Trans,withTranslation } from 'react-i18next';
 
 class Aboutus extends React.Component {
     constructor(props) {
@@ -42,10 +44,10 @@ class Aboutus extends React.Component {
                                                     <img src={aboutus.photo} />
                                                 </div>
                                                 <h3 className="aboutus-title">
-                                                    {aboutus.name}
+                                                    {aboutus.namelang[this.props.i18n.language]}
                                                 </h3>
                                                 <div className="aboutus-des">
-                                                    {aboutus.des}
+                                                    {aboutus.deslang[this.props.i18n.language]}
                                                 </div>
                                             </div>
                                         </div>
@@ -58,4 +60,4 @@ class Aboutus extends React.Component {
     }
 }
 
-export default Aboutus;
+export default withTranslation()(Aboutus);

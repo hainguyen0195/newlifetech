@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-
+import { Trans } from 'react-i18next';
 class ContentWapper extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class ContentWapper extends React.Component {
                             <div className="breadcrumb d-flex align-items-center justify-content-center">
                                 <li>
                                     <Link to="/" alt="Home">
-                                        Home
+                                        <Trans i18nKey='home' />
                                     </Link>  
                                 </li>
                                 <li>

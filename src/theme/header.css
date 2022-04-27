@@ -113,3 +113,13 @@ ul.ulcat li a:hover{
 ul.menu li a.active{
     color:#007bff
 }
+select.selectlanguage{
+    color: #555;
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
+    border: 0;
+    text-align: right;
+}
+select.selectlanguage:focus{
+    outline:none;
+}
