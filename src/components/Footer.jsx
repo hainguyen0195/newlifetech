@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter,faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faLink ,faMapMarkerAlt,faPhoneAlt ,faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import * as images from '../assets/images';
 import '../theme/footer.css';
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
 
 const listSocial = [
     { id: 1, icon: <FontAwesomeIcon icon={faFacebookF} />, name: 'Facebook',  link:'#facebook'},
@@ -93,7 +91,7 @@ class Footer extends React.Component {
                     <div className='wrap-content'>
                         <div className="row">
                             <div className='col-lg-4 col-md-6 col-sm-6'>
-                                <div className="footer-title"><Trans i18nKey='about' /></div>
+                                <div className="footer-title"><Trans i18nKey='title.thongtincongty' /></div>
                                 <div className="info-company">
                                     <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {this.state.adress}</p>
                                     <p><FontAwesomeIcon icon={faEnvelope} /> {this.state.email}</p>

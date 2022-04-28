@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegramPlane,faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faLink} from '@fortawesome/free-solid-svg-icons';
-import * as images from '../assets/images';
 import '../theme/teammember.css';
 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 import { Trans } from 'react-i18next';
 
@@ -47,6 +46,7 @@ class Teammember extends React.Component {
                 },
                 900: {
                     items: 4,
+                    margin: 20,
                 },
                 1200: {
                     items: 4,

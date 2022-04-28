@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import { Link,withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from "react-router-dom";
 
-import * as images from '../../assets/images';
 import '../../theme/project.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar} from '@fortawesome/free-solid-svg-icons';
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import ProjectItem from '../../components/ProjectComponents/ProjectItem';
 
-import {db,storage} from "../../config";
-import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
+import {db} from "../../config";
+import { collection, query, getDocs,getDoc,doc} from "firebase/firestore";
 
-import i18n from '../../i18n';
-import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class ProjectPageDetail extends React.Component {
     constructor(props) {

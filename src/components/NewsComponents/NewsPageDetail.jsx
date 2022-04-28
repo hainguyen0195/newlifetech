@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
-import { Link,withRouter } from "react-router-dom";
-
-import * as images from '../../assets/images';
+import React from 'react';
+import { withRouter } from "react-router-dom";
 import '../../theme/news.css';
-
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import NewsItem from '../../components/NewsComponents/NewsItem';
-
-import {db,storage} from "../../config";
-import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
-
+import {db} from "../../config";
+import { collection, query, getDocs,getDoc,doc} from "firebase/firestore";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
-
-import i18n from '../../i18n';
-import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class NewsPageDetail extends React.Component {
     constructor(props) {

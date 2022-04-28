@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import * as images from '../assets/images';
 import '../theme/project.css';
 import { Trans } from 'react-i18next';
+
 const listActivites=[
     { id: 1, icon: images.Avtive1, name: 'Project 1 - Mobile App Development',},
     { id: 2, icon: images.Avtive2, name: 'Project 2 - Mobile App Development',},

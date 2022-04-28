@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-dom";
+import {  Switch, Route } from "react-router-dom";
 
   import ScrollToTop from './ScrollToTop';
   import Header from './components/Header';
@@ -29,7 +28,6 @@ import { BrowserRouter as Router, Switch, Route,useParams } from "react-router-d
 
   import { withTranslation } from 'react-i18next';
   function App() {
-    
       return (
         <>
         <ScrollToTop>

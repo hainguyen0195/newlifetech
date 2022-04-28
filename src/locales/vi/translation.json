@@ -28,7 +28,7 @@
         "recruitment": "Tuyển dụng ",
         "temmember": "Thành viên của chúng tôi",
         "quicklink": "Lối tắt",
-        "contactinfomation": "Thông tin liên hệ",
+        "contactinfomation": "Form liên hệ",
         "contactus": "Liên hệ chúng tôi",
         "otherservice": "Dịch vụ khác",
         "otherrecruitment": "Bài tuyển dụng khác",
@@ -36,7 +36,8 @@
         "customers": "Đối tác",
         "technology": "Công nghệ",
         "constructiontime": "Thời gian thực hiện",
-        "evaluate": "Đánh giá"
+        "evaluate": "Đánh giá",
+        "thongtincongty":"Thông tin liên hệ"
     },
     "title_form": {
         "yourname": "Tên của bạn",

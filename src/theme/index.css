@@ -145,10 +145,25 @@ a.btn-a:hover:before{
 @media (max-width: 1200px) {
   .teammember .wrap-content{padding:0 20px;}
 }
-
+@media (min-width: 992px) and (max-width: 1060px) {
+  ul.menu li {
+    padding: 0 5px;
+  }
+  ul.menu li a {
+    padding:10px 5px;
+  }
+  .slide {
+    padding: 70px 0 0;
+  }
+}
 @media (min-width: 992px) and (max-width: 1199.98px) {
 }
-
+@media (min-width: 768px) and (max-width: 880px) {
+  ul.menu li a {
+    padding:10px 2px;
+  }
+  
+}
 @media (min-width: 768px) and (max-width: 991.98px) {
   ul.menu{
     width: 80%;
@@ -213,7 +228,7 @@ a.btn-a:hover:before{
   }
   .btn-menu{
     display: block;
-    position: absolute;
+    /* position: absolute; */
     left: 10px;
     font-size: 20px;
     cursor: pointer;
@@ -302,7 +317,7 @@ a.btn-a:hover:before{
     padding: 0 15px;
   }
   .logo {
-    width: 100%;
+    width: calc(100% - 90px);
     text-align: center;
   }
   .logo img{
@@ -384,13 +399,12 @@ a.btn-a:hover:before{
   }
   .des-skill{
     margin-bottom: 15px;
+    line-height: 1.5;
   }
   .skill-item {
     margin: 5px 0;
   }
-  a.view-project{
-    padding:8px 15px;
-  }
+  
   .footer-title{
     margin:15px 0 15px;
   }
@@ -443,6 +457,18 @@ a.btn-a:hover:before{
     font-size: 14px;
     line-height: 23px;
   }
+  .header{
+    box-shadow: 0 2px 15px 0 rgb(136 135 135 / 40%);
+    padding: 5px 0;
+  }
+  .header .wrap-content{
+    flex-wrap: wrap;
+  }
+  select.selectlanguage{
+    width:45px;
+    font-size:14px;
+  }
+
 }
 
 @media (max-width: 400px) {
@@ -464,5 +490,9 @@ a.btn-a:hover:before{
     -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+  }
+  .aboutus-des {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }

@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-
-import * as images from '../assets/images';
+import React from 'react';
 import '../theme/service.css';
-
 import ServiceItrem from '../components/ServiceComponents/ServiceItem';
-
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';

@@ -1,13 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye,faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-import * as images from '../assets/images';
 import '../theme/project.css';
-
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
-
 import ProjectItem from '../components/ProjectComponents/ProjectItem';
 import { Trans } from 'react-i18next';
 

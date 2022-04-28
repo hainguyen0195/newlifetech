@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
-import { Link,withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from "react-router-dom";
 import '../../theme/service.css';
-
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import ServiceItrem from '../../components/ServiceComponents/ServiceItem';
-
-import {db,storage} from "../../config";
+import {db} from "../../config";
 import { collection, query, getDocs,getDoc,doc } from "firebase/firestore";
-import i18n from '../../i18n';
 import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
 
 class ServicePageDetail extends React.Component {
     constructor(props) {

@@ -1,13 +1,10 @@
 import React from 'react';
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import Aboutus from '../../components/Aboutus';
-import * as images from '../../assets/images';
 import '../../theme/aboutus.css';
-import {db,storage} from "../../config";
-import { collection, query, getDocs,getDoc,doc , where} from "firebase/firestore";
-import i18n from '../../i18n';
-import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
+import {db } from "../../config";
+import { getDoc,doc } from "firebase/firestore";
+import { withTranslation } from 'react-i18next';
 
 class About extends React.Component {
     constructor(props) {

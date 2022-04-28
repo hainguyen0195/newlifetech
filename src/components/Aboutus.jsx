@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser,faSearch,faMapSigns,faHistory} from '@fortawesome/free-solid-svg-icons';
-import * as images from '../assets/images';
+import React from 'react';
 import '../theme/aboutus.css';
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
-import i18n from '../i18n';
-import { Trans,withTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class Aboutus extends React.Component {
     constructor(props) {

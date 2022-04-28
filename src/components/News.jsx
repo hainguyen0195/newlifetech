@@ -1,18 +1,12 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser,faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import * as images from '../assets/images';
 import '../theme/news.css';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
-
 import NewsItem from '../components/NewsComponents/NewsItem';
-
 import { Trans } from 'react-i18next';
 
 class News extends React.Component {
@@ -48,6 +42,7 @@ class News extends React.Component {
                 },
                 900: {
                     items: 3,
+                    margin: 20,
                 },
                 1200: {
                     items: 3,

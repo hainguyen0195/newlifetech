@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link,withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
-import i18n from '../../i18n';
 import { Trans,withTranslation } from 'react-i18next';
 
 class ServiceItrem extends React.Component {

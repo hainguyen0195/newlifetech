@@ -28,7 +28,7 @@
         "recruitment": "Our Recruitment",
         "temmember": "Expert Team Member",
         "quicklink": "Quick Links",
-        "contactinfomation": "Contact Information",
+        "contactinfomation": "Contact form",
         "contactus": "Contact us",
         "otherservice": "Other Services",
         "otherrecruitment": "Other Recruitment",
@@ -36,7 +36,8 @@
         "customers": "Customers",
         "technology": "Technology",
         "constructiontime": "Construction time",
-        "evaluate": "Evaluate"
+        "evaluate": "Evaluate",
+        "thongtincongty":"Contact Information"
     },
     "title_form": {
         "yourname": "Your Name",

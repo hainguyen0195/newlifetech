@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-
-import * as images from '../../assets/images';
+import React from 'react';
 import '../../theme/service.css';
-
 import ContentWapper from '../../components/LayoutComponents/ContentWapper';
 import ServiceItrem from '../../components/ServiceComponents/ServiceItem';
-
-import {db,storage} from "../../config";
-
+import {db} from "../../config";
 import { collection, query, getDocs } from "firebase/firestore";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { Trans,withTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class Service extends React.Component {
     constructor(props) {

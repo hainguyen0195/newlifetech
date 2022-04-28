@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { Link ,NavLink } from "react-router-dom";
 import { Button } from 'bootstrap-4-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown,faBars,faTimes} from '@fortawesome/free-solid-svg-icons';
 import * as images from '../assets/images';
 import '../theme/header.css';
-import {db,storage} from "../config";
+import {db} from "../config";
 import { collection, query, getDocs } from "firebase/firestore";
 import i18n from '../i18n';
-import { Trans,withTranslation } from 'react-i18next';
-import { Translation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class Header extends React.Component {
     constructor(props) {

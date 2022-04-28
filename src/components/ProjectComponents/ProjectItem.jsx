@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus,faEye} from '@fortawesome/free-solid-svg-icons';
-import i18n from '../../i18n';
 import { Trans,withTranslation } from 'react-i18next';
 class ProjectItem extends React.Component {
     constructor(props) {
